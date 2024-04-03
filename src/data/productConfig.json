@@ -1,0 +1,10 @@
+{
+  "configPages": ["Basics","Addons","Accessories"],
+  "configPagesCount": 3,
+  "basicOptions": ["Woodcolor"],
+  "basicOptionsCount": 1,
+  "addonOptions": ["FabricSails","PaddleOars","TeakBenches","LaserEngraving","EngineSupport","Ladder","Awning"],
+  "addonOptionsCount": 7,
+  "accessoryOptions": ["Canopy","LifeJacket","LaunchTrolley","BikeTrolley","BeachTrolley","StdTrolley","CarryBag"],
+  "accessoryOptionsCount": 2
+}
