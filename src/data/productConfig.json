@@ -1,5 +1,6 @@
 {
   "configPages": ["Basics","Addons","Accessories"],
+  "subMenu":["basicOptions","addonOptions","accessoryOptions"],
   "configPagesCount": 3,
   "basicOptions": ["Woodcolor"],
   "basicOptionsCount": 1,

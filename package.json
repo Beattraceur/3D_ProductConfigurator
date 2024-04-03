@@ -10,16 +10,16 @@
 		"convert": "gltfjsx public/models/Benchy.gltf"
 	},
 	"dependencies": {
+		"@react-three/drei": "^9.104.0",
+		"@react-three/fiber": "^8.16.1",
+		"gltfjsx": "^6.2.16",
 		"open-props": "^1.7.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-helmet-async": "^2.0.4",
-		"wouter": "^3.1.0",
-		"@react-three/drei": "^9.104.0",
-		"@react-three/fiber": "^8.16.1",
-		"gltfjsx": "^6.2.16",
-		"three": "^0.163.0"
-
+		"redaxios": "^0.5.1",
+		"three": "^0.163.0",
+		"wouter": "^3.1.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^8.57.0",

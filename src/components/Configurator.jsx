@@ -1,11 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import ConfigMenu from './ConfigMenu.jsx';
 
 export default function Configurator() {
 	return (
-		<div>
+		<>
 			<Helmet title="Configurator" />
 			Configurator
-		</div>
+      <ConfigMenu />
+		</>
 	);
 }
