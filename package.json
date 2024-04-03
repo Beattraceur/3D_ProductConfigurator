@@ -1,0 +1,44 @@
+{
+	"name": "vite-react-starter",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite --host",
+		"build": "vite build",
+		"preview": "vite preview",
+		"convert": "gltfjsx public/models/Benchy.gltf"
+	},
+	"dependencies": {
+		"open-props": "^1.7.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-helmet-async": "^2.0.4",
+		"wouter": "^3.1.0",
+		"@react-three/drei": "^9.104.0",
+		"@react-three/fiber": "^8.16.1",
+		"gltfjsx": "^6.2.16",
+		"three": "^0.163.0"
+
+	},
+	"devDependencies": {
+		"@eslint/js": "^8.57.0",
+		"@types/react": "^18.2.74",
+		"@types/react-dom": "^18.2.23",
+		"@vitejs/plugin-react": "^4.2.1",
+		"cssnano": "^6.1.2",
+		"eslint": "^8.57.0",
+		"eslint-plugin-jsx-a11y": "^6.8.0",
+		"eslint-plugin-react": "^7.34.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.6",
+		"globals": "^15.0.0",
+		"postcss-import": "^16.1.0",
+		"postcss-jit-props": "^1.0.14",
+		"postcss-preset-env": "^9.5.4",
+		"vite": "^5.2.7"
+	},
+	"browserslist": [
+		"defaults"
+	]
+}
