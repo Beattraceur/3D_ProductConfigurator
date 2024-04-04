@@ -1,28 +1,42 @@
 {
   "configPages": ["Basics","Addons","Accessories"],
   "subMenu":["basicOptions","addonOptions","accessoryOptions"],
-  "configPagesCount": 3,
+ 
   "basicOptions": ["Woodcolor"],
-  "basicOptionsCount": 1,
+  
   "addonOptions": ["FabricSails","PaddleOars","TeakBenches","LaserEngraving","EngineSupport","Ladder","Awning"],
-  "addonOptionsCount": 7,
+ 
   "accessoryOptions": ["Canopy","LifeJacket","LaunchTrolley","BikeTrolley","BeachTrolley","StdTrolley","CarryBag"],
-  "accessoryOptionsCount": 2,
   "Woodcolor": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "WoodcolorPrice": ["5000","5000","5000","5000","5000","5000","5000","5000","5000"],
   "FabricSails": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "FabricSailsPrice": ["5000","5000","5000","5000","5000","5000","5000","5000","5000"],
   "PaddleOars": ["PreMounted","DIY-Kit"],
+  "PaddleOarsPrice": ["10000","7000"],
   "TeakBenches": ["Replacement","Additional"],
+  "TeakBenchesPrice": ["40000","600000"],
   "LaserEngraving": ["Factory","CustomName","DIY-Plate","CustomDIY-Plate"],
+  "LaserEngravingPrice": ["5000","7000","3000","5000"],
   "EngineSupport": ["PreMounted","DIY-Kit"],
+  "EngineSupportPrice": ["3000","2000"],
   "Ladder": ["PreMounted","DIY-Kit"],
-  "Awning": ["DIY-Kit"],
+  "LadderPrice": ["15000","10000"],
+  "Awning": ["DIY-Kit"], 
+  "AwningPrice": ["18000"],
   "Canopy": ["DIY-Kit"],
+  "CanopyPrice": ["20000"],
   "LifeJacket": ["StandardOrange","RegattaBlue"],
+  "LifeJacketPrice": ["5500","7000"],
   "LaunchTrolley": ["PreAssembled","DIY-Kit"],
+  "LaunchTrolleyPrice": ["20000","15000"],
   "BikeTrolley": ["PreAssembled","DIY-Kit"],
+  "BikeTrolleyPrice": ["10000","8000"],
   "BeachTrolley": ["PreAssembled","DIY-Kit"],
+  "BeachTrolleyPrice": ["20000","15000"],
   "StdTrolley": ["PreAssembled","DIY-Kit"],
-  "CarryBag": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"]
+  "StdTrolleyPrice": ["10000","8000"],
+  "CarryBag": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "CarryBagPrice": ["20000","20000","20000","20000","20000","20000","20000","20000","20000"]
 
 
 

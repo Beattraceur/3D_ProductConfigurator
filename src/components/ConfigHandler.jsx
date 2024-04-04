@@ -37,6 +37,9 @@ function configReducer(config, message) {
 			console.log('in', message.currentOption, 'delete', message.item);
 			delete config[message.currentOption];
 			break;
+		case 'reset':
+			console.log('reset');
+			return {};
 		default:
 			break;
 	}

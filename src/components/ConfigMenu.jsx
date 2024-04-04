@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import jsonData from '../data/productConfig.json';
 import { useConfigDispatchContext } from './ConfigHandler.jsx';
-
+import { Link } from 'wouter';
 export default function ConfigMenu() {
 	const [config, configDispatch] = useConfigDispatchContext();
 	const [data, setData] = useState([]);
-	const [subMenuIndex, setSubMenuIndex] = useState([]);
-	const [currentOption, setCurrentOption] = useState([]);
+	const [subMenuIndex, setSubMenuIndex] = useState(0);
+	const [currentOption, setCurrentOption] = useState('Woodcolor');
 
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		// Simulating asynchronous data fetching with setTimeout
 		setTimeout(() => {
 			setData(jsonData);
-			setSubMenuIndex(0);
-			setCurrentOption('Woodcolor');
 			setIsLoading(false);
 		}, 1000); // Change the delay according to your preference
 	}, []);
@@ -51,6 +49,7 @@ export default function ConfigMenu() {
 			<div>
 				{console.log(data[currentOption])}
 				<p>{currentOption}</p>
+
 				{data[currentOption].map((item) => (
 					<label key={item}>
 						<input
@@ -68,6 +67,10 @@ export default function ConfigMenu() {
 					</label>
 				))}
 			</div>
+			<button onClick={() => configDispatch({ action: 'reset' })}>Reset</button>
+			<Link href="/checkout">
+				<button>Checkout</button>
+			</Link>
 		</div>
 	);
 }
