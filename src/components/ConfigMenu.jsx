@@ -36,7 +36,7 @@ export default function ConfigMenu() {
 				))}
 			</div>
 			<div>{subMenuIndex}</div>
-			{console.log(data.subMenu[subMenuIndex])}
+
 			{data[data.subMenu[subMenuIndex]].map((option) => (
 				<button
 					disabled={currentOption === option}
@@ -47,17 +47,17 @@ export default function ConfigMenu() {
 				</button>
 			))}
 			<div>
-				{console.log(data[currentOption])}
 				<p>{currentOption}</p>
 
-				{data[currentOption].map((item) => (
+				{data[currentOption].map((item, index) => (
 					<label key={item}>
 						<input
 							type="checkbox"
-							checked={config[currentOption] === item}
+							checked={config[currentOption] === index}
 							onChange={({ target }) =>
 								configDispatch({
 									currentOption,
+									index,
 									item,
 									action: `${target.checked}`,
 								})

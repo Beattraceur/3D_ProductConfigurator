@@ -27,11 +27,11 @@ export default function ConfigHandler() {
 }
 
 function configReducer(config, message) {
-	console.log(message);
+	// console.log(message);
 	switch (message.action) {
 		case 'true':
 			console.log('set', message.currentOption, 'to', message.item);
-			config[message.currentOption] = message.item;
+			config[message.currentOption] = message.index;
 			break;
 		case 'false':
 			console.log('in', message.currentOption, 'delete', message.item);
