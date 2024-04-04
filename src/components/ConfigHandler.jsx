@@ -45,7 +45,8 @@ function configReducer(config, message) {
 function getInitialConfig() {
 	try {
 		const config = JSON.parse(localStorage.getItem('config'));
-		return Object.is(typeof config, 'object') ? config : {};
+
+		return config === null ? {} : config;
 	} catch (error) {
 		console.log(error);
 	}
