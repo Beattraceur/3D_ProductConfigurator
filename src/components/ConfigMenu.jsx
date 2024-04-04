@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import jsonData from '../data/productConfig.json';
+import { useConfigDispatchContext } from './ConfigHandler.jsx';
 
 export default function ConfigMenu() {
+	const [config, configDispatch] = useConfigDispatchContext();
 	const [data, setData] = useState([]);
 	const [subMenuIndex, setSubMenuIndex] = useState([]);
 	const [currentOption, setCurrentOption] = useState([]);
@@ -51,7 +53,17 @@ export default function ConfigMenu() {
 				<p>{currentOption}</p>
 				{data[currentOption].map((item) => (
 					<label key={item}>
-						<input type="radio"></input>
+						<input
+							type="checkbox"
+							checked={config[currentOption] === item}
+							onChange={({ target }) =>
+								configDispatch({
+									currentOption,
+									item,
+									action: `${target.checked}`,
+								})
+							}
+						></input>
 						{item}
 					</label>
 				))}

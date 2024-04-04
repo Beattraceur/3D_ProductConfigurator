@@ -2,10 +2,10 @@ import { createContext, useContext, useEffect } from 'react';
 import { useImmerReducer } from 'use-immer';
 import ProductFinder from './ProductFinder.jsx';
 
-const ConfigContext = createContext(null);
+const ConfigDispatchContext = createContext(null);
 
-export function useConfigContext() {
-	return useContext(ConfigContext);
+export function useConfigDispatchContext() {
+	return useContext(ConfigDispatchContext);
 }
 
 export default function ConfigHandler() {
@@ -20,17 +20,23 @@ export default function ConfigHandler() {
 	}, [config]);
 
 	return (
-		<ConfigContext.Provider value={[config, configDispatch]}>
+		<ConfigDispatchContext.Provider value={[config, configDispatch]}>
 			<ProductFinder />
-		</ConfigContext.Provider>
+		</ConfigDispatchContext.Provider>
 	);
 }
 
 function configReducer(config, message) {
+	console.log(message);
 	switch (message.action) {
-		case 'changeto':
+		case 'true':
+			console.log('set', message.currentOption, 'to', message.item);
+			config[message.currentOption] = message.item;
 			break;
-
+		case 'false':
+			console.log('in', message.currentOption, 'delete', message.item);
+			delete config[message.currentOption];
+			break;
 		default:
 			break;
 	}
@@ -39,9 +45,9 @@ function configReducer(config, message) {
 function getInitialConfig() {
 	try {
 		const config = JSON.parse(localStorage.getItem('config'));
-		return Array.isArray(config) ? config : [];
+		return Object.is(typeof config, 'object') ? config : {};
 	} catch (error) {
 		console.log(error);
 	}
-	return [];
+	return {};
 }
