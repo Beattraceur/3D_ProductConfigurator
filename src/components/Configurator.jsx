@@ -8,7 +8,7 @@ export default function Configurator() {
 		<>
 			<Helmet title="Configurator" />
 			Configurator
-			<Calculator />
+			<Calculator display="total" />
 			<ConfigMenu />
 		</>
 	);

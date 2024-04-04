@@ -3,7 +3,7 @@ import { useConfigDispatchContext } from './ConfigHandler.jsx';
 import jsonPriceList from '../data/p8priceList.json';
 import { getFormattedPrice } from '../hooks/getFormatedPrice';
 
-export default function Calculator() {
+export default function Calculator({ display }) {
 	const [config, configDispatch] = useConfigDispatchContext();
 	const [priceData, setPriceData] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +22,11 @@ export default function Calculator() {
 
 	return (
 		<div>
+			{display === 'all' || display === 'list' ? (
+				<ConfigList priceData={priceData} config={config} />
+			) : (
+				<></>
+			)}
 			<TotalPrice priceData={priceData} config={config} />
 		</div>
 	);
@@ -42,4 +47,12 @@ function TotalPrice({ priceData, config }) {
 		setTotalPrice(getFormattedPrice(newTotalPrice, ' €'));
 	}, [priceData, config]);
 	return <p>Total: {totalPrice}</p>;
+}
+
+function ConfigList({ priceData, config }) {
+	const [configList, setConfigList] = useState([]);
+	useEffect(() => {
+		setConfigList(Object.keys(priceData));
+	}, [priceData]);
+	return <div>ConfigList</div>;
 }
