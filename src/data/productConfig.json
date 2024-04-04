@@ -7,5 +7,23 @@
   "addonOptions": ["FabricSails","PaddleOars","TeakBenches","LaserEngraving","EngineSupport","Ladder","Awning"],
   "addonOptionsCount": 7,
   "accessoryOptions": ["Canopy","LifeJacket","LaunchTrolley","BikeTrolley","BeachTrolley","StdTrolley","CarryBag"],
-  "accessoryOptionsCount": 2
+  "accessoryOptionsCount": 2,
+  "Woodcolor": ["Natural","Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "FabricSails": ["None","Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "PaddleOars": ["None","PreMounted","DIY-Kit"],
+  "TeakBenches": ["None","Replacement","Additional"],
+  "LaserEngraving": ["None","Factory","CustomName","DIY-Plate","CustomDIY-Plate"],
+  "EngineSupport": ["None","PreMounted","DIY-Kit"],
+  "Ladder": ["None","PreMounted","DIY-Kit"],
+  "Awning": ["None","DIY-Kit"],
+  "Canopy": ["None","DIY-Kit"],
+  "LifeJacket": ["None","StandardOrange","RegattaBlue"],
+  "LaunchTrolley": ["None","PreAssembled","DIY-Kit"],
+  "BikeTrolley": ["None","PreAssembled","DIY-Kit"],
+  "BeachTrolley": ["None","PreAssembled","DIY-Kit"],
+  "StdTrolley": ["None","PreAssembled","DIY-Kit"],
+  "CarryBag": ["None","Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"]
+
+
+
 }
