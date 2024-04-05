@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html,
@@ -9,4 +11,17 @@ body,
 	height: 100%;
 	margin: 0;
 	padding: 0;
+}
+
+#root {
+	border: solid 3px black;
+}
+body {
+	border: solid 3px rgb(0, 81, 255);
+}
+.product-finder {
+	height: 80%;
+}
+.Stage {
+	border: solid 3px rgb(0, 255, 8);
 }

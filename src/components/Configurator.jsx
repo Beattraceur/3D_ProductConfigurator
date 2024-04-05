@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import ConfigMenu from './ConfigMenu.jsx';
 import Calculator from './Calculator.jsx';
+import ProductStage from './ProductStage.jsx';
 
 export default function Configurator() {
 	return (
@@ -9,6 +10,7 @@ export default function Configurator() {
 			<Helmet title="Configurator" />
 			Configurator
 			<Calculator display="total" />
+			<ProductStage />
 			<ConfigMenu />
 		</>
 	);
