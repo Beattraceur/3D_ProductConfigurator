@@ -5,7 +5,7 @@ import jsonData from '../data/productConfig.json';
 import { getFormattedPrice } from '../hooks/getFormatedPrice';
 
 export default function Calculator({ display }) {
-	const [config, configDispatch] = useConfigDispatchContext();
+	const [config] = useConfigDispatchContext();
 	const [priceData, setPriceData] = useState([]);
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);

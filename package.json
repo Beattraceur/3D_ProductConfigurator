@@ -7,7 +7,7 @@
 		"dev": "vite --host",
 		"build": "vite build",
 		"preview": "vite preview",
-		"convert": "gltfjsx public/models/Benchy.gltf"
+		"convert": "gltfjsx public/models/basicDinghy.gltf"
 	},
 	"dependencies": {
 		"@react-three/drei": "^9.104.0",
