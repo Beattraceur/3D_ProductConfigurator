@@ -63,7 +63,6 @@ function ConfigList({ priceData, config, data }) {
 			['P8-Sailboat', 'basic', getFormattedPrice(priceData.basePrice, ' €')],
 		];
 		Object.keys(config).forEach((key) => {
-			console.log('name', key);
 			const index = config[key];
 			const prices = priceData[key];
 			const itemName = data[key][index];
