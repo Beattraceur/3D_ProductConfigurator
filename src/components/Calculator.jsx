@@ -75,20 +75,24 @@ function ConfigList({ priceData, config, data }) {
 		});
 
 		setConfigList(tempConfigList);
-	}, [config]);
+	}, [priceData, config, data]);
 	return (
-		<div>
-			ConfigList
-			<div>
+		<table>
+			<thead>
+				<tr>
+					<td colSpan="4">current configuration:</td>
+				</tr>
+			</thead>
+			<tbody>
 				{configList.map((item) => (
 					<tr key={item}>
-						<td>{item[0]} -</td>
+						<td>{item[0]}</td>
 						<td>{item[1]}</td>
 						<td>Price = </td>
 						<td>{item[2]}</td>
 					</tr>
 				))}
-			</div>
-		</div>
+			</tbody>
+		</table>
 	);
 }
