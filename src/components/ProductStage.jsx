@@ -8,7 +8,7 @@ export default function ProductStage() {
 	return (
 		<>
 			<Canvas className="Stage">
-				<ambientLight intensity={0.05} />
+				<ambientLight intensity={0.5} />
 				<directionalLight position={[0, 0, 5]} intensity={0.5} />
 				<StageControl />
 

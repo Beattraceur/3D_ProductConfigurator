@@ -192,7 +192,13 @@ function GetSailMaterial(sailMaterial) {
 			TextureObject.map = './textures/textile/Fabric_Tarp_001_black.jpg';
 			break;
 		default:
-			TextureObject.map = './textures/textile/Fabric_Tarp_001_basecolor.jpg';
+			TextureObject.map = './textures/textile/Fabric_Silk_001_basecolor.jpg';
+			TextureObject.normalMap = './textures/textile/Fabric_Silk_001_normal.jpg';
+			TextureObject.roughnessMap =
+				'./textures/textile/Fabric_Silk_001_roughness.jpg';
+			TextureObject.aoMap =
+				'./textures/textile/Fabric_Silk_001_ambientOcclusion.jpg';
+
 			break;
 	}
 	const woodTextureProps = useTexture(TextureObject);
