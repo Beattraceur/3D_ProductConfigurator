@@ -30,60 +30,85 @@ export default function BasicDinghy(props) {
 	const sailMaterialProps = GetSailMaterial(sailMaterial);
 	return (
 		<group {...props} dispose={null}>
-			<mesh geometry={nodes.Dinghy.geometry} scale={0.01} visible={true}>
-				<meshStandardMaterial {...boatMaterialProps} />
-			</mesh>
 			<mesh
-				geometry={nodes.Dinghy_Daggerboard.geometry}
-				scale={0.01}
+				geometry={nodes.Dinghy.geometry}
+				material={materials.basicWood}
+				scale={0.1}
 				visible={true}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
-			<mesh geometry={nodes.Dinghy_Pole.geometry} scale={0.01} visible={true}>
+			<mesh
+				geometry={nodes.Dinghy_Daggerboard.geometry}
+				material={materials.basicWoodDagger}
+				scale={0.1}
+				visible={true}
+			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
-			<mesh geometry={nodes.Dinghy_Bench.geometry} scale={0.01} visible={true}>
+			<mesh
+				geometry={nodes.Dinghy_Pole.geometry}
+				material={materials.basicWoodPole}
+				scale={0.1}
+				visible={true}
+			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
-			<mesh geometry={nodes.Dinghy_Rudder.geometry} scale={0.01} visible={true}>
+			<mesh
+				geometry={nodes.Dinghy_Bench.geometry}
+				material={materials.basicWoodBench}
+				scale={0.1}
+				visible={true}
+			>
+				<meshStandardMaterial {...boatMaterialProps} />
+			</mesh>
+			<mesh
+				geometry={nodes.Dinghy_Rudder.geometry}
+				material={materials.basicWoodRudder}
+				scale={0.1}
+				visible={true}
+			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
 			<mesh
 				geometry={nodes.Ladder.geometry}
-				position={[1.333, -0.056, 0.199]}
+				material={materials.Metal}
 				rotation={[Math.PI / 2, 0.39, 0]}
-				scale={[0.016, 0.12, 0.016]}
+				scale={[0.16, 1.203, 0.16]}
 				visible={true}
 			>
 				<meshStandardMaterial {...metalTextureProps} />
 			</mesh>
 			<mesh
 				geometry={nodes.LadderStep1.geometry}
-				position={[1.252, 0.344, 0.199]}
-				scale={[0.033, 0.01, 0.033]}
+				material={nodes.LadderStep1.material}
+				scale={[0.331, 0.105, 0.331]}
+				visible={true}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
 			<mesh
 				geometry={nodes.LadderStep2.geometry}
-				position={[1.257, 0.13, 0.199]}
-				scale={[0.033, 0.01, 0.033]}
+				material={nodes.LadderStep2.material}
+				scale={[0.331, 0.105, 0.331]}
+				visible={true}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
 			<mesh
 				geometry={nodes.EngineSupport.geometry}
-				position={[1.22, 0.453, -0.256]}
+				material={materials.basicWoodDagger}
 				rotation={[0, 0, -0.21]}
-				scale={[0.009, 0.084, 0.102]}
+				scale={[0.091, 0.844, 1.023]}
+				visible={true}
 			>
 				<meshStandardMaterial {...rubberTextureProps} />
 			</mesh>
 			<mesh
 				geometry={nodes.Dinghy_Boom.geometry}
 				material={materials.basicWood}
-				position={[0.181, 0, 0]}
+				scale={10}
+				visible={true}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
@@ -91,6 +116,8 @@ export default function BasicDinghy(props) {
 				geometry={nodes.Sail.geometry}
 				material={nodes.Sail.material}
 				rotation={[Math.PI / 2, 0, 0]}
+				scale={10}
+				visible={true}
 			>
 				<meshStandardMaterial {...sailMaterialProps} />
 			</mesh>
@@ -140,10 +167,10 @@ function GetBoatMaterial(boatMaterial) {
 			break;
 	}
 	const woodTextureProps = useTexture(TextureObject);
-	woodTextureProps.map.repeat.set(7, 7);
-	woodTextureProps.normalMap.repeat.set(7, 7);
-	woodTextureProps.roughnessMap.repeat.set(7, 7);
-	woodTextureProps.aoMap.repeat.set(7, 7);
+	woodTextureProps.map.repeat.set(2, 2);
+	woodTextureProps.normalMap.repeat.set(2, 2);
+	woodTextureProps.roughnessMap.repeat.set(2, 2);
+	woodTextureProps.aoMap.repeat.set(2, 2);
 
 	woodTextureProps.map.wrapS =
 		woodTextureProps.map.wrapT =
@@ -202,10 +229,10 @@ function GetSailMaterial(sailMaterial) {
 			break;
 	}
 	const woodTextureProps = useTexture(TextureObject);
-	woodTextureProps.map.repeat.set(7, 7);
-	woodTextureProps.normalMap.repeat.set(7, 7);
-	woodTextureProps.roughnessMap.repeat.set(7, 7);
-	woodTextureProps.aoMap.repeat.set(7, 7);
+	woodTextureProps.map.repeat.set(5, 5);
+	woodTextureProps.normalMap.repeat.set(5, 5);
+	woodTextureProps.roughnessMap.repeat.set(5, 5);
+	woodTextureProps.aoMap.repeat.set(5, 5);
 
 	woodTextureProps.map.wrapS =
 		woodTextureProps.map.wrapT =
