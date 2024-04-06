@@ -1,13 +1,15 @@
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useImmerReducer } from 'use-immer';
 import ProductFinder from './ProductFinder.jsx';
 
 const ConfigDispatchContext = createContext(null);
-
+const DisplayContext = createContext({});
 export function useConfigDispatchContext() {
 	return useContext(ConfigDispatchContext);
 }
-
+export function useDisplayContext() {
+	return useContext(DisplayContext);
+}
 export default function ConfigHandler() {
 	const [config, configDispatch] = useImmerReducer(
 		configReducer,
@@ -18,10 +20,18 @@ export default function ConfigHandler() {
 	useEffect(() => {
 		localStorage.setItem('config', JSON.stringify(config));
 	}, [config]);
+	const [boatMaterial, setBoatMaterial] = useState('wood');
+	useEffect(() => {
+		console.log(config);
+		if (config.Woodcolor !== undefined) setBoatMaterial(config.Woodcolor);
+		else setBoatMaterial('wood');
+	}, [config]);
 
 	return (
 		<ConfigDispatchContext.Provider value={[config, configDispatch]}>
-			<ProductFinder />
+			<DisplayContext.Provider value={{ boatMaterial, setBoatMaterial }}>
+				<ProductFinder />
+			</DisplayContext.Provider>
 		</ConfigDispatchContext.Provider>
 	);
 }

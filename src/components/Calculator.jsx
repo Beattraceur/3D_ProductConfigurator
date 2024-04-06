@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useConfigDispatchContext } from './ConfigHandler.jsx';
 import jsonPriceList from '../data/p8priceList.json';
 import jsonData from '../data/productConfig.json';
-import { getFormattedPrice } from '../hooks/getFormatedPrice';
+import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 
 export default function Calculator({ display }) {
 	const [config] = useConfigDispatchContext();

@@ -16,7 +16,8 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9
 			]
 		}
 	],
@@ -132,6 +133,15 @@
 				1.2198257446289062,
 				0.4525149166584015,
 				-0.25557464361190796
+			]
+		},
+		{
+			"mesh":9,
+			"name":"Dinghy_Boom",
+			"translation":[
+				0.18128995597362518,
+				0,
+				0
 			]
 		}
 	],
@@ -310,6 +320,20 @@
 					"material":1
 				}
 			]
+		},
+		{
+			"name":"Circle",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":35,
+						"NORMAL":36,
+						"TEXCOORD_0":37
+					},
+					"indices":38,
+					"material":0
+				}
+			]
 		}
 	],
 	"accessors":[
@@ -386,12 +410,12 @@
 			"componentType":5126,
 			"count":2640,
 			"max":[
-				-100.00096130371094,
+				-82.14517211914062,
 				405.7253723144531,
 				2.9990463256835938
 			],
 			"min":[
-				-105.99903869628906,
+				-88.14324951171875,
 				5.725395202636719,
 				-2.9990463256835938
 			],
@@ -612,6 +636,40 @@
 			"componentType":5123,
 			"count":36,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":35,
+			"componentType":5126,
+			"count":120,
+			"max":[
+				0.895695149898529,
+				1.1458722352981567,
+				0.029999997466802597
+			],
+			"min":[
+				-0.9848532676696777,
+				1.0858724117279053,
+				-0.03000173531472683
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":36,
+			"componentType":5126,
+			"count":120,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":37,
+			"componentType":5126,
+			"count":120,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":38,
+			"componentType":5123,
+			"count":228,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -824,11 +882,35 @@
 			"byteLength":72,
 			"byteOffset":359240,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":1440,
+			"byteOffset":359312,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1440,
+			"byteOffset":360752,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":960,
+			"byteOffset":362192,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":456,
+			"byteOffset":363152,
+			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":359312,
+			"byteLength":363608,
 			"uri":"basicDinghy.bin"
 		}
 	]

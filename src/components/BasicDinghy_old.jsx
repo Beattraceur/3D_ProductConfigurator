@@ -79,20 +79,6 @@ export default function BasicDinghy(props) {
 			>
 				<meshStandardMaterial {...rubberTextureProps} />
 			</mesh>
-			<mesh
-				geometry={nodes.EngineSupport.geometry}
-				material={materials.basicWoodDagger}
-				position={[1.22, 0.453, -0.256]}
-				rotation={[0, 0, -0.21]}
-				scale={[0.009, 0.084, 0.102]}
-			/>
-			<mesh
-				geometry={nodes.Dinghy_Boom.geometry}
-				material={materials.basicWood}
-				position={[0.181, 0, 0]}
-			>
-				<meshStandardMaterial {...boatMaterialProps} />
-			</mesh>
 		</group>
 	);
 }
