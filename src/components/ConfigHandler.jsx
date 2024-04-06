@@ -21,15 +21,19 @@ export default function ConfigHandler() {
 		localStorage.setItem('config', JSON.stringify(config));
 	}, [config]);
 	const [boatMaterial, setBoatMaterial] = useState('wood');
+	const [sailMaterial, setSailMaterial] = useState('sail');
 	useEffect(() => {
-		console.log(config);
-		if (config.Woodcolor !== undefined) setBoatMaterial(config.Woodcolor);
-		else setBoatMaterial('wood');
+		config.Woodcolor !== undefined
+			? setBoatMaterial(config.Woodcolor)
+			: setBoatMaterial('wood');
+		config.FabricSails !== undefined
+			? setSailMaterial(config.FabricSails)
+			: setSailMaterial('sail');
 	}, [config]);
 
 	return (
 		<ConfigDispatchContext.Provider value={[config, configDispatch]}>
-			<DisplayContext.Provider value={{ boatMaterial, setBoatMaterial }}>
+			<DisplayContext.Provider value={{ boatMaterial, sailMaterial }}>
 				<ProductFinder />
 			</DisplayContext.Provider>
 		</ConfigDispatchContext.Provider>

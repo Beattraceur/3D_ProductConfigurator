@@ -9,7 +9,7 @@ import * as THREE from 'three';
 import { useDisplayContext } from './ConfigHandler.jsx';
 
 export default function BasicDinghy(props) {
-	const { boatMaterial, setBoatMaterial } = useDisplayContext();
+	const { boatMaterial, sailMaterial } = useDisplayContext();
 
 	const { nodes, materials } = useGLTF('../models/basicDinghy.gltf');
 
@@ -27,6 +27,7 @@ export default function BasicDinghy(props) {
 	});
 
 	const boatMaterialProps = GetBoatMaterial(boatMaterial);
+	const sailMaterialProps = GetSailMaterial(sailMaterial);
 	return (
 		<group {...props} dispose={null}>
 			<mesh geometry={nodes.Dinghy.geometry} scale={0.01} visible={true}>
@@ -80,18 +81,18 @@ export default function BasicDinghy(props) {
 				<meshStandardMaterial {...rubberTextureProps} />
 			</mesh>
 			<mesh
-				geometry={nodes.EngineSupport.geometry}
-				material={materials.basicWoodDagger}
-				position={[1.22, 0.453, -0.256]}
-				rotation={[0, 0, -0.21]}
-				scale={[0.009, 0.084, 0.102]}
-			/>
-			<mesh
 				geometry={nodes.Dinghy_Boom.geometry}
 				material={materials.basicWood}
 				position={[0.181, 0, 0]}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
+			</mesh>
+			<mesh
+				geometry={nodes.Sail.geometry}
+				material={nodes.Sail.material}
+				rotation={[Math.PI / 2, 0, 0]}
+			>
+				<meshStandardMaterial {...sailMaterialProps} />
 			</mesh>
 		</group>
 	);
@@ -153,5 +154,62 @@ function GetBoatMaterial(boatMaterial) {
 		woodTextureProps.aoMap.wrapS =
 		woodTextureProps.aoMap.wrapT =
 			THREE.RepeatWrapping;
+	return woodTextureProps;
+}
+
+function GetSailMaterial(sailMaterial) {
+	const TextureObject = {
+		normalMap: './textures/textile/Fabric_Tarp_001_normal.jpg',
+		roughnessMap: './textures/textile/Fabric_Tarp_001_roughness.jpg',
+		aoMap: './textures/textile/Fabric_Tarp_001_ambientOcclusion.jpg',
+	};
+	switch (sailMaterial) {
+		case 0:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_red.jpg';
+			break;
+		case 1:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_green.jpg';
+			break;
+		case 2:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_blue.jpg';
+			break;
+		case 3:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_yellow.jpg';
+			break;
+		case 4:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_orange.jpg';
+			break;
+		case 5:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_purple.jpg';
+			break;
+		case 6:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_white.jpg';
+			break;
+		case 7:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_brown.jpg';
+			break;
+		case 8:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_black.jpg';
+			break;
+		default:
+			TextureObject.map = './textures/textile/Fabric_Tarp_001_basecolor.jpg';
+			break;
+	}
+	const woodTextureProps = useTexture(TextureObject);
+	woodTextureProps.map.repeat.set(7, 7);
+	woodTextureProps.normalMap.repeat.set(7, 7);
+	woodTextureProps.roughnessMap.repeat.set(7, 7);
+	woodTextureProps.aoMap.repeat.set(7, 7);
+
+	woodTextureProps.map.wrapS =
+		woodTextureProps.map.wrapT =
+		woodTextureProps.normalMap.wrapS =
+		woodTextureProps.normalMap.wrapT =
+		woodTextureProps.roughnessMap.wrapS =
+		woodTextureProps.roughnessMap.wrapT =
+		woodTextureProps.aoMap.wrapS =
+		woodTextureProps.aoMap.wrapT =
+			THREE.RepeatWrapping;
+	woodTextureProps.side = THREE.DoubleSide;
 	return woodTextureProps;
 }

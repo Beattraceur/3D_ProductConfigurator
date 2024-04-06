@@ -17,7 +17,8 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -142,6 +143,16 @@
 				0.18128995597362518,
 				0,
 				0
+			]
+		},
+		{
+			"mesh":10,
+			"name":"Sail",
+			"rotation":[
+				0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
 			]
 		}
 	],
@@ -332,6 +343,19 @@
 					},
 					"indices":38,
 					"material":0
+				}
+			]
+		},
+		{
+			"name":"Plane",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":39,
+						"NORMAL":40,
+						"TEXCOORD_0":41
+					},
+					"indices":42
 				}
 			]
 		}
@@ -670,6 +694,40 @@
 			"componentType":5123,
 			"count":228,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":39,
+			"componentType":5126,
+			"count":401,
+			"max":[
+				1.0708043575286865,
+				0.005746538285166025,
+				-1.1142034530639648
+			],
+			"min":[
+				-0.8267162442207336,
+				-0.22696824371814728,
+				-4.025588035583496
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":40,
+			"componentType":5126,
+			"count":401,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":41,
+			"componentType":5126,
+			"count":401,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":42,
+			"componentType":5123,
+			"count":609,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -906,11 +964,35 @@
 			"byteLength":456,
 			"byteOffset":363152,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":4812,
+			"byteOffset":363608,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":4812,
+			"byteOffset":368420,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":3208,
+			"byteOffset":373232,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1218,
+			"byteOffset":376440,
+			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":363608,
+			"byteLength":377660,
 			"uri":"basicDinghy.bin"
 		}
 	]

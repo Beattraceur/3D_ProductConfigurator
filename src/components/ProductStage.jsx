@@ -11,6 +11,7 @@ export default function ProductStage() {
 				<ambientLight intensity={0.05} />
 				<directionalLight position={[0, 0, 5]} intensity={0.5} />
 				<StageControl />
+
 				<BasicDinghy />
 
 				<Environment preset="sunset" />
