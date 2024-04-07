@@ -2,6 +2,11 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useImmerReducer } from 'use-immer';
 import ProductFinder from './ProductFinder.jsx';
 
+const ProductDataContext = createContext(null);
+export function useProductDataContext() {
+	return useContext(ProductDataContext);
+}
+
 const ConfigDispatchContext = createContext(null);
 const DisplayContext = createContext({});
 export function useConfigDispatchContext() {
@@ -11,6 +16,7 @@ export function useDisplayContext() {
 	return useContext(DisplayContext);
 }
 export default function ConfigHandler() {
+	const [productData, setProductData] = useState(null);
 	const [config, configDispatch] = useImmerReducer(
 		configReducer,
 		null,
@@ -32,11 +38,13 @@ export default function ConfigHandler() {
 	}, [config]);
 
 	return (
-		<ConfigDispatchContext.Provider value={[config, configDispatch]}>
-			<DisplayContext.Provider value={{ boatMaterial, sailMaterial }}>
-				<ProductFinder />
-			</DisplayContext.Provider>
-		</ConfigDispatchContext.Provider>
+		<ProductDataContext.Provider value={[productData, setProductData]}>
+			<ConfigDispatchContext.Provider value={[config, configDispatch]}>
+				<DisplayContext.Provider value={{ boatMaterial, sailMaterial }}>
+					<ProductFinder />
+				</DisplayContext.Provider>
+			</ConfigDispatchContext.Provider>
+		</ProductDataContext.Provider>
 	);
 }
 
