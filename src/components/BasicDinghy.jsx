@@ -128,7 +128,7 @@ export default function BasicDinghy(props) {
 useGLTF.preload('../models/basicDinghy.gltf');
 
 function GetBoatMaterial(boatMaterial) {
-	console.log(boatMaterial);
+	// console.log(boatMaterial);
 	const TextureObject = {
 		normalMap: './textures/wood/Wood_027_normal.jpg',
 		roughnessMap: './textures/wood/Wood_027_roughness.jpg',
