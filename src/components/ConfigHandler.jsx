@@ -17,6 +17,7 @@ export function useDisplayContext() {
 }
 export default function ConfigHandler() {
 	const [productData, setProductData] = useState(null);
+	const [priceData, setPriceData] = useState(null);
 	const [config, configDispatch] = useImmerReducer(
 		configReducer,
 		null,
@@ -38,7 +39,9 @@ export default function ConfigHandler() {
 	}, [config]);
 
 	return (
-		<ProductDataContext.Provider value={[productData, setProductData]}>
+		<ProductDataContext.Provider
+			value={[productData, setProductData, priceData, setPriceData]}
+		>
 			<ConfigDispatchContext.Provider value={[config, configDispatch]}>
 				<DisplayContext.Provider value={{ boatMaterial, sailMaterial }}>
 					<ProductFinder />

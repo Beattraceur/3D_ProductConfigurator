@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { useConfigDispatchContext } from './ConfigHandler.jsx';
-import jsonPriceList from '../data/p8priceList.json';
-import jsonData from '../data/productConfig.json';
+import {
+	useConfigDispatchContext,
+	useProductDataContext,
+} from './ConfigHandler.jsx';
+
 import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
+import DataLoader from './DataLoader.jsx';
 
 export default function Calculator({ display }) {
+	const [productData, setProductData, priceData, setPriceData] =
+		useProductDataContext();
+
 	const [config] = useConfigDispatchContext();
-	const [priceData, setPriceData] = useState([]);
+
 	const [data, setData] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		// Simulating asynchronous data fetching with setTimeout
-		setTimeout(() => {
-			setPriceData(jsonPriceList);
-			setData(jsonData);
-			setIsLoading(false);
-		}, 1000); // Change the delay according to your preference
-	}, []);
-
-	if (isLoading) {
-		return <p>Total...</p>;
-	}
+	if (productData === null) return <DataLoader />;
 
 	return (
 		<div>
 			{display === 'all' || display === 'list' ? (
-				<ConfigList priceData={priceData} data={data} config={config} />
+				<ConfigList
+					priceData={priceData}
+					productData={productData}
+					config={config}
+				/>
 			) : (
 				''
 			)}
@@ -56,7 +54,7 @@ function TotalPrice({ priceData, config }) {
 	return <p>Total: {totalPrice}</p>;
 }
 
-function ConfigList({ priceData, config, data }) {
+function ConfigList({ priceData, config, productData }) {
 	const [configList, setConfigList] = useState([]);
 	useEffect(() => {
 		const tempConfigList = [
@@ -65,7 +63,7 @@ function ConfigList({ priceData, config, data }) {
 		Object.keys(config).forEach((key) => {
 			const index = config[key];
 			const prices = priceData[key];
-			const itemName = data[key][index];
+			const itemName = productData[key][index];
 			tempConfigList.push([
 				key,
 				itemName,
@@ -74,7 +72,7 @@ function ConfigList({ priceData, config, data }) {
 		});
 
 		setConfigList(tempConfigList);
-	}, [priceData, config, data]);
+	}, [priceData, config, productData]);
 	return (
 		<table>
 			<thead>

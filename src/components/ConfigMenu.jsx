@@ -74,7 +74,7 @@ export default function ConfigMenu() {
 }
 
 function getInitialOptions(productData) {
-	console.log('productData', productData);
+	// console.log('productData', productData);
 	const initialOptions = [];
 	productData.subMenu.forEach((subMenu) => {
 		initialOptions.push(productData[subMenu][0]);
