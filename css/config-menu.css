@@ -1,0 +1,20 @@
+.config-menu {
+	background-color: rgba(53, 120, 153, 0.539);
+	text-align: center;
+}
+.config-menu-button {
+	margin: 0 20px;
+	padding: 10px 3vw;
+	border-top-left-radius: 13px;
+	border-top-right-radius: 13px;
+	background-color: rgb(46, 105, 134);
+	font-size: large;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+.config-menu-button:disabled {
+	cursor: default;
+	background-color: white;
+	color: rgb(46, 105, 134);
+}

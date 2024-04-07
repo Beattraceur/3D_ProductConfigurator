@@ -15,12 +15,12 @@ export default function ConfigMenu() {
 	);
 
 	return (
-		<div>
-			<p>Done</p>
+		<div className="config-menu">
 			{/* MainMenu */}
 			<div>
 				{productData.configPages.map((page, index) => (
 					<button
+						className="config-menu-button"
 						disabled={subMenuIndex === index}
 						key={page}
 						onClick={() => setSubMenuIndex(index)}
@@ -29,10 +29,11 @@ export default function ConfigMenu() {
 					</button>
 				))}
 			</div>
-			<div>{subMenuIndex}</div>
+
 			{/* SubMenu */}
 			{productData[productData.subMenu[subMenuIndex]].map((option) => (
 				<button
+					className="config-menu-button"
 					disabled={currentOption[subMenuIndex] === option}
 					key={option}
 					onClick={() => {

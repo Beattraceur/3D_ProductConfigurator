@@ -14,14 +14,40 @@ body,
 }
 
 #root {
-	border: solid 3px black;
+	/* border: solid 3px black; */
 }
 body {
-	border: solid 3px rgb(0, 81, 255);
+	/* border: solid 3px rgb(0, 81, 255); */
+}
+.navbar {
+	height: 30px;
+	display: flex;
+	justify-content: space-around;
 }
 .product-finder {
-	height: 80%;
+	height: 100%;
+	/* border: solid red 3px; */
+	position: relative;
+}
+.configurator {
+	/* border: solid 3px saddlebrown; */
+	height: 100%;
 }
 .Stage {
-	border: solid 3px rgb(0, 255, 8);
+	/* border: solid 3px rgb(0, 255, 8); */
+}
+.display-total {
+	position: absolute;
+	color: white;
+	background-color: rgba(53, 120, 153, 0.539);
+	top: 200px;
+	padding: 20px;
+	border-top-right-radius: 13px;
+	border-bottom-right-radius: 13px;
+}
+.config-menu {
+	position: absolute;
+	width: 100vw;
+	height: 30vh;
+	bottom: 0px;
 }

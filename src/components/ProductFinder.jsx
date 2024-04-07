@@ -11,12 +11,19 @@ export default function ProductFinder() {
 		<div className="product-finder">
 			<Helmet title="ProductFinder" />
 			<nav className="navbar">
-				<Link href="/">Home</Link>
-				<Link href="/configurator">Configurator</Link>
-				<Link href="/checkout">Checkout</Link>
-				<Link href="/about">About</Link>
+				<Link className="nav-item" href="/">
+					Home
+				</Link>
+				<Link className="nav-item" href="/configurator">
+					Configurator
+				</Link>
+				<Link className="nav-item" href="/checkout">
+					Checkout
+				</Link>
+				<Link className="nav-item" href="/about">
+					About
+				</Link>
 			</nav>
-			Welcome to ProductFinder
 			<Route path="/" component={Home} />
 			<Suspense fallback={<strong>Loading...</strong>}>
 				<Route path="/configurator" component={Configurator} />

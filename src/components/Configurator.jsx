@@ -11,12 +11,12 @@ export default function Configurator() {
 	if (productData === null) return <DataLoader />;
 
 	return (
-		<>
+		<div className="configurator">
 			<Helmet title="Configurator" />
-			Configurator
-			<Calculator display="total" />
+
 			<ProductStage />
+			<Calculator display="total" />
 			<ConfigMenu />
-		</>
+		</div>
 	);
 }
