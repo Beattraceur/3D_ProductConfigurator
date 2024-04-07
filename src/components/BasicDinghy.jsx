@@ -29,7 +29,7 @@ export default function BasicDinghy(props) {
 	const boatMaterialProps = GetBoatMaterial(boatMaterial);
 	const sailMaterialProps = GetSailMaterial(sailMaterial);
 	return (
-		<group {...props} dispose={null}>
+		<group {...props} dispose={null} position={[0, 0, 0]}>
 			<mesh
 				geometry={nodes.Dinghy.geometry}
 				material={materials.basicWood}

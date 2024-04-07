@@ -6,7 +6,11 @@ export default function ConfigMenu() {
 	const [config, configDispatch] = useConfigDispatchContext();
 	const [data, setData] = useState([]);
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
-	const [currentOption, setCurrentOption] = useState('Woodcolor');
+	const [currentOption, setCurrentOption] = useState([
+		'Woodcolor',
+		'FabricSails',
+		'Canopy',
+	]);
 
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
@@ -24,6 +28,7 @@ export default function ConfigMenu() {
 	return (
 		<div>
 			<p>Done</p>
+			{/* MainMenu */}
 			<div>
 				{data.configPages.map((page, index) => (
 					<button
@@ -36,27 +41,31 @@ export default function ConfigMenu() {
 				))}
 			</div>
 			<div>{subMenuIndex}</div>
-
+			{/* SubMenu */}
 			{data[data.subMenu[subMenuIndex]].map((option) => (
 				<button
-					disabled={currentOption === option}
+					disabled={currentOption[subMenuIndex] === option}
 					key={option}
-					onClick={() => setCurrentOption(option)}
+					onClick={() => {
+						const newOptArr = [...currentOption];
+						newOptArr[subMenuIndex] = option;
+						setCurrentOption(newOptArr);
+					}}
 				>
 					{option}
 				</button>
 			))}
 			<div>
-				<p>{currentOption}</p>
+				<p>{currentOption[subMenuIndex]}</p>
 
-				{data[currentOption].map((item, index) => (
+				{data[currentOption[subMenuIndex]].map((item, index) => (
 					<label key={item}>
 						<input
 							type="checkbox"
-							checked={config[currentOption] === index}
+							checked={config[currentOption[subMenuIndex]] === index}
 							onChange={({ target }) =>
 								configDispatch({
-									currentOption,
+									currentOption: currentOption[subMenuIndex],
 									index,
 									item,
 									action: `${target.checked}`,
