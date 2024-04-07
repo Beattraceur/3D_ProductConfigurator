@@ -18,7 +18,13 @@ export default function ConfigMenu() {
 	return (
 		<div className="config-menu">
 			{/* MainMenu */}
-			<div>
+			<div className="main-menu">
+				<button
+					className="reset-config-button"
+					onClick={() => configDispatch({ action: 'reset' })}
+				>
+					Reset all
+				</button>
 				{productData.configPages.map((page, index) => (
 					<button
 						className="config-menu-button"
@@ -29,6 +35,9 @@ export default function ConfigMenu() {
 						{page}
 					</button>
 				))}
+				<Link href="/checkout">
+					<button className="checkout-config-button">Checkout</button>
+				</Link>
 			</div>
 
 			{/* SubMenu */}
@@ -84,10 +93,6 @@ export default function ConfigMenu() {
 					))}
 				</div>
 			</div>
-			<button onClick={() => configDispatch({ action: 'reset' })}>Reset</button>
-			<Link href="/checkout">
-				<button>Checkout</button>
-			</Link>
 		</div>
 	);
 }

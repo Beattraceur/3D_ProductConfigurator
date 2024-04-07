@@ -20,6 +20,30 @@
 	background-color: var(--button-set);
 	color: var(--button-back);
 }
+.reset-config-button,
+.checkout-config-button {
+	position: absolute;
+	top: 4.6px;
+	padding: 10px;
+	width: 8vw;
+	background-color: var(--button-back);
+	font-size: large;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.reset-config-button {
+	border-top-right-radius: 13px;
+	border-bottom-right-radius: 13px;
+	left: 0px;
+}
+.checkout-config-button {
+	border-top-left-radius: 13px;
+	border-bottom-left-radius: 13px;
+	right: 0px;
+}
+
 .sub-menu {
 	/* width: 1500px;
 	border-top-right-radius: 13px; */
