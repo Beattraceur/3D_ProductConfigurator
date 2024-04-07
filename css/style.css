@@ -13,8 +13,8 @@
 	--background-color: var(--grey);
 	--text-color: var(--white);
 
-	--transp-back: rgba(53, 120, 153, 0.539);
-	--button-back: rgb(46, 105, 134);
+	--transp-back: rgba(62, 155, 202, 0.539);
+	--button-back: rgb(17, 50, 66);
 	--button-hover: rgb(71, 158, 202);
 	--button-set: rgb(151, 220, 255);
 }

@@ -6,6 +6,7 @@
   "accessoryOptions": ["Canopy","LifeJacket","LaunchTrolley","BikeTrolley","BeachTrolley","StdTrolley","CarryBag"],
   "Woodcolor": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
   "FabricSails": ["Red","Green","Blue","Yellow","Orange","Purple","White","Brown","Black"],
+  "colorValues":{"Red":"#B10000","Green":"#00B112","Blue":"#0075FF","Yellow":"#FFB000","Orange":"#B14B00","Purple":"#5500B1","White":"#ffffff","Brown":"#411D00","Black":"#000000"},
   "PaddleOars": ["PreMounted","DIY-Kit"],
   "TeakBenches": ["Replacement","Additional"],
   "LaserEngraving": ["Factory","CustomName","DIY-Plate","CustomDIY-Plate"],

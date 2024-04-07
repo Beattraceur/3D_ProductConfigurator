@@ -5,6 +5,7 @@ import {
 	useProductDataContext,
 } from './ConfigHandler.jsx';
 import { Link } from 'wouter';
+
 export default function ConfigMenu() {
 	const [productData] = useProductDataContext();
 	const [config, configDispatch] = useConfigDispatchContext();
@@ -52,7 +53,12 @@ export default function ConfigMenu() {
 				{/* <p>{currentOption[subMenuIndex]}</p> */}
 				<div className="config-item-container">
 					{productData[currentOption[subMenuIndex]].map((item, index) => (
-						<label key={item} className="config-item-label">
+						<label
+							key={item}
+							className={`config-item-label${
+								config[currentOption[subMenuIndex]] === index ? '-active' : ''
+							}`}
+						>
 							<input
 								className="checkbox"
 								type="checkbox"
@@ -66,6 +72,13 @@ export default function ConfigMenu() {
 									})
 								}
 							></input>
+							{productData.colorValues[item] !== undefined && (
+								<span
+									className="color-dip"
+									style={{ backgroundColor: productData.colorValues[item] }}
+								></span>
+							)}
+
 							{item}
 						</label>
 					))}
