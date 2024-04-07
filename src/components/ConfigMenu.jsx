@@ -31,40 +31,45 @@ export default function ConfigMenu() {
 			</div>
 
 			{/* SubMenu */}
-			{productData[productData.subMenu[subMenuIndex]].map((option) => (
-				<button
-					className="config-menu-button"
-					disabled={currentOption[subMenuIndex] === option}
-					key={option}
-					onClick={() => {
-						const newOptArr = [...currentOption];
-						newOptArr[subMenuIndex] = option;
-						setCurrentOption(newOptArr);
-					}}
-				>
-					{option}
-				</button>
-			))}
-			<div>
-				<p>{currentOption[subMenuIndex]}</p>
-
-				{productData[currentOption[subMenuIndex]].map((item, index) => (
-					<label key={item}>
-						<input
-							type="checkbox"
-							checked={config[currentOption[subMenuIndex]] === index}
-							onChange={({ target }) =>
-								configDispatch({
-									currentOption: currentOption[subMenuIndex],
-									index,
-									item,
-									action: `${target.checked}`,
-								})
-							}
-						></input>
-						{item}
-					</label>
+			<div className="sub-menu">
+				{productData[productData.subMenu[subMenuIndex]].map((option) => (
+					<button
+						className="config-menu-button"
+						disabled={currentOption[subMenuIndex] === option}
+						key={option}
+						onClick={() => {
+							const newOptArr = [...currentOption];
+							newOptArr[subMenuIndex] = option;
+							setCurrentOption(newOptArr);
+						}}
+					>
+						{option}
+					</button>
 				))}
+			</div>
+
+			<div className="sub-menu">
+				{/* <p>{currentOption[subMenuIndex]}</p> */}
+				<div className="config-item-container">
+					{productData[currentOption[subMenuIndex]].map((item, index) => (
+						<label key={item} className="config-item-label">
+							<input
+								className="checkbox"
+								type="checkbox"
+								checked={config[currentOption[subMenuIndex]] === index}
+								onChange={({ target }) =>
+									configDispatch({
+										currentOption: currentOption[subMenuIndex],
+										index,
+										item,
+										action: `${target.checked}`,
+									})
+								}
+							></input>
+							{item}
+						</label>
+					))}
+				</div>
 			</div>
 			<button onClick={() => configDispatch({ action: 'reset' })}>Reset</button>
 			<Link href="/checkout">

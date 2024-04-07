@@ -2,3 +2,19 @@
 @import 'navigation';
 @import 'font';
 @import 'config-menu';
+
+:root {
+	--day: #ffffff;
+	--night: #1d1d1d;
+
+	--grey: #545454;
+	--white: #ffffff;
+	--black: #000000;
+	--background-color: var(--grey);
+	--text-color: var(--white);
+
+	--transp-back: rgba(53, 120, 153, 0.539);
+	--button-back: rgb(46, 105, 134);
+	--button-hover: rgb(71, 158, 202);
+	--button-set: rgb(151, 220, 255);
+}

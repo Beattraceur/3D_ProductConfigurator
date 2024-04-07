@@ -38,8 +38,8 @@ body {
 }
 .display-total {
 	position: absolute;
-	color: white;
-	background-color: rgba(53, 120, 153, 0.539);
+	color: var(--text-color);
+	background-color: var(--transp-back);
 	top: 200px;
 	padding: 20px;
 	border-top-right-radius: 13px;
