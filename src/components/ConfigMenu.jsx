@@ -6,6 +6,7 @@ import {
 } from './ConfigHandler.jsx';
 import { Link } from 'wouter';
 import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
+import Calculator from './Calculator.jsx';
 
 export default function ConfigMenu() {
 	const [productData, setProductData, priceData, setPriceData] =
@@ -20,6 +21,9 @@ export default function ConfigMenu() {
 
 	return (
 		<div className="config-menu">
+			<div className="display-total">
+				<Calculator display="total" />
+			</div>
 			{/* MainMenu */}
 			<div className="main-menu">
 				<button

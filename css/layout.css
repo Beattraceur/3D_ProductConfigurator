@@ -41,15 +41,6 @@ body {
 .Stage {
 	/* border: solid 3px rgb(0, 255, 8); */
 }
-.display-total {
-	position: absolute;
-	color: var(--text-color);
-	background-color: var(--transp-back);
-	top: 200px;
-	padding: 20px;
-	border-top-right-radius: 13px;
-	border-bottom-right-radius: 13px;
-}
 
 .config-menu {
 	position: absolute;

@@ -15,7 +15,7 @@ export default function Configurator() {
 			<Helmet title="Configurator" />
 
 			<ProductStage />
-			<Calculator display="total" />
+
 			<ConfigMenu />
 		</div>
 	);

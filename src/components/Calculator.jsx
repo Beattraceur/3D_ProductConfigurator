@@ -51,7 +51,7 @@ function TotalPrice({ priceData, config }) {
 
 		setTotalPrice(getFormattedPrice(newTotalPrice, ' €'));
 	}, [priceData, config]);
-	return <p className="display-total">Total: {totalPrice}</p>;
+	return <p className="total">Total: {totalPrice}</p>;
 }
 
 function ConfigList({ priceData, config, productData }) {

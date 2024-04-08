@@ -99,3 +99,13 @@
 	padding: 10px;
 	border-top-left-radius: 13px;
 }
+.display-total {
+	margin-top: -36px;
+	border: none;
+	position: absolute;
+	left: 0px;
+	color: var(--text-color);
+	background-color: var(--transp-back);
+	padding: 10px 10px 7px 10px;
+	border-top-right-radius: 13px;
+}
