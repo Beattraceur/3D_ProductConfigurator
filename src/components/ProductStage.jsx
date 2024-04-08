@@ -1,8 +1,8 @@
 import { Canvas, extend } from '@react-three/fiber';
 import React, { Suspense } from 'react';
-import StageControl from './StageControl.jsx';
+
 import BasicDinghy from './BasicDinghy.jsx';
-import { Environment, Mask, OrbitControls, Sky } from '@react-three/drei';
+import { OrbitControls, Sky } from '@react-three/drei';
 import { Water } from 'three-stdlib';
 import Ocean from './Ocean.jsx';
 
