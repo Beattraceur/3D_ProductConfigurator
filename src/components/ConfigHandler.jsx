@@ -16,6 +16,8 @@ export function useDisplayContext() {
 	return useContext(DisplayContext);
 }
 export default function ConfigHandler() {
+	const [sharingURL, setSharingURL] = useState(false);
+	const [clipboardNote, setClipboardNote] = useState(false);
 	const [productData, setProductData] = useState(null);
 	const [priceData, setPriceData] = useState(null);
 	const [config, configDispatch] = useImmerReducer(
@@ -24,9 +26,6 @@ export default function ConfigHandler() {
 		getInitialConfig,
 	);
 
-	useEffect(() => {
-		localStorage.setItem('config', JSON.stringify(config));
-	}, [config]);
 	const [boatMaterial, setBoatMaterial] = useState('wood');
 	const [sailMaterial, setSailMaterial] = useState('sail');
 	const [displayPaddleOars, setDisplayPaddleOars] = useState(false);
@@ -36,6 +35,37 @@ export default function ConfigHandler() {
 	const [displayLadder, setDisplayLadder] = useState(false);
 	const [displayAwning, setDisplayAwning] = useState(false);
 	const [displayLifeJacket, setDisplayLifeJacket] = useState(false);
+	useEffect(() => {
+		setClipboardNote(false);
+		const url = new URL(window.location.href);
+		url.searchParams.delete('config');
+		window.history.replaceState(null, null, url.href);
+		localStorage.setItem('config', JSON.stringify(config));
+	}, [config]);
+
+	useEffect(() => {
+		if (sharingURL) {
+			console.log('sharingURL', sharingURL);
+			const url = new URL(window.location.href);
+			url.searchParams.delete('config');
+			console.log('config', config);
+			url.searchParams.set('config', JSON.stringify(config));
+			window.history.replaceState(null, null, url.href);
+			navigator.clipboard
+				.writeText(url.href)
+				.then(() => {
+					setClipboardNote(true);
+					setTimeout(() => {
+						setClipboardNote(false);
+					}, 3000);
+				})
+				.catch((error) => {
+					console.error('Failed to copy URL: ', error);
+				});
+			setSharingURL(false);
+		}
+	}, [sharingURL]);
+
 	useEffect(() => {
 		config.Woodcolor !== undefined
 			? setBoatMaterial(config.Woodcolor)
@@ -70,7 +100,9 @@ export default function ConfigHandler() {
 		<ProductDataContext.Provider
 			value={[productData, setProductData, priceData, setPriceData]}
 		>
-			<ConfigDispatchContext.Provider value={[config, configDispatch]}>
+			<ConfigDispatchContext.Provider
+				value={[config, configDispatch, setSharingURL, clipboardNote]}
+			>
 				<DisplayContext.Provider
 					value={{
 						boatMaterial,
@@ -111,12 +143,19 @@ function configReducer(config, message) {
 }
 
 function getInitialConfig() {
-	try {
-		const config = JSON.parse(localStorage.getItem('config'));
+	const url = new URL(window.location.href);
+	if (url.searchParams.get('config')) {
+		console.log('searchParams', url.searchParams.get('config'));
+		return JSON.parse(url.searchParams.get('config'));
+	} else {
+		try {
+			const config = JSON.parse(localStorage.getItem('config'));
 
-		return config === null ? {} : config;
-	} catch (error) {
-		console.log(error);
+			return config === null ? {} : config;
+		} catch (error) {
+			console.log(error);
+		}
 	}
+
 	return {};
 }

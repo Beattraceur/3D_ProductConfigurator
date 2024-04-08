@@ -89,3 +89,13 @@
 	position: absolute;
 	margin-top: 20px;
 }
+.sharing-config-button {
+	margin-top: -36px;
+	border: none;
+	position: absolute;
+	right: 0px;
+	color: var(--text-color);
+	background-color: var(--transp-back);
+	padding: 10px;
+	border-top-left-radius: 13px;
+}

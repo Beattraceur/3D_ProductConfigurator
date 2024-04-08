@@ -10,7 +10,8 @@ import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 export default function ConfigMenu() {
 	const [productData, setProductData, priceData, setPriceData] =
 		useProductDataContext();
-	const [config, configDispatch] = useConfigDispatchContext();
+	const [config, configDispatch, setSharingURL, clipboardNote] =
+		useConfigDispatchContext();
 
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
 	const [currentOption, setCurrentOption] = useState(
@@ -37,6 +38,12 @@ export default function ConfigMenu() {
 						{page}
 					</button>
 				))}
+				<button
+					className="sharing-config-button"
+					onClick={() => setSharingURL(true)}
+				>
+					{clipboardNote ? 'Copied to clipboard!' : 'Share config link'}
+				</button>
 				<Link href="/checkout">
 					<button className="checkout-config-button">Checkout</button>
 				</Link>
