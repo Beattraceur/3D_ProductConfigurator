@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { IoIosCamera } from 'react-icons/io';
 import jsonData from '../data/productConfig.json';
 import {
+	useCaptureScreenContext,
 	useConfigDispatchContext,
 	useProductDataContext,
 } from './ConfigHandler.jsx';
@@ -13,7 +15,7 @@ export default function ConfigMenu() {
 		useProductDataContext();
 	const [config, configDispatch, setSharingURL, clipboardNote] =
 		useConfigDispatchContext();
-
+	const [takeScreenShot, setTakeScreenShot] = useCaptureScreenContext();
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
 	const [currentOption, setCurrentOption] = useState(
 		getInitialOptions(productData),
@@ -48,6 +50,12 @@ export default function ConfigMenu() {
 				>
 					{clipboardNote ? 'Copied to clipboard!' : 'Share config link'}
 				</button>
+
+				<IoIosCamera
+					className="screenshot-button"
+					onClick={() => setTakeScreenShot(true)}
+				/>
+
 				<Link href="/checkout">
 					<button className="checkout-config-button">Checkout</button>
 				</Link>

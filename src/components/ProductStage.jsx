@@ -5,6 +5,7 @@ import BasicDinghy from './BasicDinghy.jsx';
 import { OrbitControls, Sky } from '@react-three/drei';
 import { Water } from 'three-stdlib';
 import Ocean from './Ocean.jsx';
+import ScreenshotButton from './ScreenshotButton.jsx';
 
 extend({ Water });
 export default function ProductStage() {
@@ -27,6 +28,7 @@ export default function ProductStage() {
 				{/* <Environment preset="dawn" /> */}
 
 				<OrbitControls />
+				<ScreenshotButton />
 			</Canvas>
 		</>
 	);

@@ -3,17 +3,23 @@ import { useImmerReducer } from 'use-immer';
 import ProductFinder from './ProductFinder.jsx';
 
 const ProductDataContext = createContext(null);
+const ConfigDispatchContext = createContext(null);
+const DisplayContext = createContext({});
+const CaptureScreenContext = createContext({});
+
 export function useProductDataContext() {
 	return useContext(ProductDataContext);
 }
 
-const ConfigDispatchContext = createContext(null);
-const DisplayContext = createContext({});
 export function useConfigDispatchContext() {
 	return useContext(ConfigDispatchContext);
 }
 export function useDisplayContext() {
 	return useContext(DisplayContext);
+}
+
+export function useCaptureScreenContext() {
+	return useContext(CaptureScreenContext);
 }
 export default function ConfigHandler() {
 	const [sharingURL, setSharingURL] = useState(false);
@@ -25,7 +31,7 @@ export default function ConfigHandler() {
 		null,
 		getInitialConfig,
 	);
-
+	const [takeScreenShot, setTakeScreenShot] = useState(false);
 	const [boatMaterial, setBoatMaterial] = useState('wood');
 	const [sailMaterial, setSailMaterial] = useState('sail');
 	const [displayPaddleOars, setDisplayPaddleOars] = useState(false);
@@ -116,7 +122,11 @@ export default function ConfigHandler() {
 						displayLifeJacket,
 					}}
 				>
-					<ProductFinder />
+					<CaptureScreenContext.Provider
+						value={[takeScreenShot, setTakeScreenShot]}
+					>
+						<ProductFinder />
+					</CaptureScreenContext.Provider>
 				</DisplayContext.Provider>
 			</ConfigDispatchContext.Provider>
 		</ProductDataContext.Provider>

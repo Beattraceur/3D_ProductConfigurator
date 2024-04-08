@@ -109,3 +109,12 @@
 	padding: 10px 10px 7px 10px;
 	border-top-right-radius: 13px;
 }
+.screenshot-button {
+	position: absolute;
+	right: 10vw;
+	background-color: rgba(0, 0, 0, 0);
+	font-size: 52px;
+	color: var(--button-back);
+	border: none;
+	cursor: pointer;
+}
