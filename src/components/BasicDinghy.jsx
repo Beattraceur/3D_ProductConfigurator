@@ -9,16 +9,32 @@ import * as THREE from 'three';
 import { useDisplayContext } from './ConfigHandler.jsx';
 
 export default function BasicDinghy(props) {
-	const { boatMaterial, sailMaterial } = useDisplayContext();
+	const {
+		boatMaterial,
+		sailMaterial,
+		displayLadder,
+		displayPaddleOars,
+		displayTeakBenches,
+		displayLaserEngraving,
+		displayEngineSupport,
+		displayAwning,
+		displayLifeJacket,
+	} = useDisplayContext();
 
 	const { nodes, materials } = useGLTF('../models/basicDinghy.gltf');
-
+	const teakwoodTextureProps = useTexture({
+		map: './textures/wood/Wood_024_basecolor.jpg',
+		normalMap: './textures/wood/Wood_024_normal.jpg',
+		roughnessMap: './textures/wood/Wood_024_roughness.jpg',
+		aoMap: './textures/wood/Wood_024_ambientOcclusion.jpg',
+	});
 	const rubberTextureProps = useTexture({
 		map: './textures/rubber/Rubber_Sole_002_basecolor.jpg',
 		normalMap: './textures/rubber/Rubber_Sole_002_normal.jpg',
 		roughnessMap: './textures/rubber/Rubber_Sole_002_roughness.jpg',
 		aoMap: './textures/rubber/Rubber_Sole_002_ambientOcclusion.jpg',
 	});
+	rubberTextureProps.side = THREE.DoubleSide;
 	const metalTextureProps = useTexture({
 		map: './textures/metal/Metal_scratched_008_basecolor.jpg',
 		normalMap: './textures/metal/Metal_scratched_008_normal.jpg',
@@ -28,8 +44,9 @@ export default function BasicDinghy(props) {
 
 	const boatMaterialProps = GetBoatMaterial(boatMaterial);
 	const sailMaterialProps = GetSailMaterial(sailMaterial);
+	const lifeJacketMaterialProps = GetLifeJacketMaterial(displayLifeJacket);
 	return (
-		<group {...props} dispose={null} position={[0, 0, 0]}>
+		<group {...props} dispose={null}>
 			<mesh
 				geometry={nodes.Dinghy.geometry}
 				material={materials.basicWood}
@@ -60,7 +77,11 @@ export default function BasicDinghy(props) {
 				scale={0.1}
 				visible={true}
 			>
-				<meshStandardMaterial {...boatMaterialProps} />
+				{displayTeakBenches ? (
+					<meshStandardMaterial {...teakwoodTextureProps} />
+				) : (
+					<meshStandardMaterial {...boatMaterialProps} />
+				)}
 			</mesh>
 			<mesh
 				geometry={nodes.Dinghy_Rudder.geometry}
@@ -75,7 +96,7 @@ export default function BasicDinghy(props) {
 				material={materials.Metal}
 				rotation={[Math.PI / 2, 0.39, 0]}
 				scale={[0.16, 1.203, 0.16]}
-				visible={true}
+				visible={displayLadder}
 			>
 				<meshStandardMaterial {...metalTextureProps} />
 			</mesh>
@@ -83,7 +104,7 @@ export default function BasicDinghy(props) {
 				geometry={nodes.LadderStep1.geometry}
 				material={nodes.LadderStep1.material}
 				scale={[0.331, 0.105, 0.331]}
-				visible={true}
+				visible={displayLadder}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
@@ -91,7 +112,7 @@ export default function BasicDinghy(props) {
 				geometry={nodes.LadderStep2.geometry}
 				material={nodes.LadderStep2.material}
 				scale={[0.331, 0.105, 0.331]}
-				visible={true}
+				visible={displayLadder}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
 			</mesh>
@@ -100,7 +121,7 @@ export default function BasicDinghy(props) {
 				material={materials.basicWoodDagger}
 				rotation={[0, 0, -0.21]}
 				scale={[0.091, 0.844, 1.023]}
-				visible={true}
+				visible={displayEngineSupport}
 			>
 				<meshStandardMaterial {...rubberTextureProps} />
 			</mesh>
@@ -120,6 +141,87 @@ export default function BasicDinghy(props) {
 				visible={true}
 			>
 				<meshStandardMaterial {...sailMaterialProps} />
+			</mesh>
+			<mesh
+				geometry={nodes.PaddleOars.geometry}
+				material={nodes.PaddleOars.material}
+				visible={displayPaddleOars}
+			>
+				<meshStandardMaterial {...metalTextureProps} />
+			</mesh>
+			<mesh
+				geometry={nodes.Engrave.geometry}
+				material={materials.Metal}
+				position={[-10.822, -2.323, 0]}
+				rotation={[Math.PI / 2, 0.211, -Math.PI / 2]}
+				scale={0.233}
+				visible={displayLaserEngraving}
+			>
+				<meshStandardMaterial {...metalTextureProps} />
+			</mesh>
+			<mesh
+				geometry={nodes.Awning_mounts.geometry}
+				material={nodes.Awning_mounts.material}
+				visible={displayAwning}
+			>
+				<meshStandardMaterial {...metalTextureProps} />
+			</mesh>
+			<group
+				position={[7.496, -0.428, 2.011]}
+				rotation={[0.312, 0.35, -0.11]}
+				scale={[0.212, 0.212, 0.134]}
+			>
+				<mesh
+					geometry={nodes.meshId0_name001.geometry}
+					material={materials.M_Orange_a_matte}
+					visible={displayLifeJacket}
+				>
+					<meshStandardMaterial {...lifeJacketMaterialProps} />
+				</mesh>
+				<mesh
+					geometry={nodes.meshId0_name001_1.geometry}
+					material={materials.M_Black_a_matte}
+					visible={displayLifeJacket}
+				>
+					<meshStandardMaterial {...lifeJacketMaterialProps} />
+				</mesh>
+				<mesh
+					geometry={nodes.meshId0_name001_2.geometry}
+					material={materials.basicWood}
+					visible={displayLifeJacket}
+				>
+					<meshStandardMaterial {...metalTextureProps} />
+				</mesh>
+			</group>
+			<group
+				position={[6.721, 0.26, -2.277]}
+				rotation={[1.575, 0.07, -2.853]}
+				scale={0}
+			>
+				<mesh
+					geometry={nodes.tarp.geometry}
+					material={materials.basicWood}
+					visible={true}
+				>
+					<meshStandardMaterial {...boatMaterialProps} />
+				</mesh>
+				<mesh
+					geometry={nodes.tarp_1.geometry}
+					material={materials.basicWood}
+					visible={true}
+				>
+					<meshStandardMaterial {...rubberTextureProps} />
+				</mesh>
+			</group>
+			<mesh
+				geometry={nodes.Awning_rods.geometry}
+				material={nodes.Awning_rods.material}
+				position={[3.596, -0.635, -1.737]}
+				rotation={[-0.213, -0.262, -1.558]}
+				scale={1.24}
+				visible={displayAwning}
+			>
+				<meshStandardMaterial {...metalTextureProps} />
 			</mesh>
 		</group>
 	);
@@ -228,21 +330,49 @@ function GetSailMaterial(sailMaterial) {
 
 			break;
 	}
-	const woodTextureProps = useTexture(TextureObject);
-	woodTextureProps.map.repeat.set(5, 5);
-	woodTextureProps.normalMap.repeat.set(5, 5);
-	woodTextureProps.roughnessMap.repeat.set(5, 5);
-	woodTextureProps.aoMap.repeat.set(5, 5);
+	const sailTextureProps = useTexture(TextureObject);
+	sailTextureProps.map.repeat.set(5, 5);
+	sailTextureProps.normalMap.repeat.set(5, 5);
+	sailTextureProps.roughnessMap.repeat.set(5, 5);
+	sailTextureProps.aoMap.repeat.set(5, 5);
 
-	woodTextureProps.map.wrapS =
-		woodTextureProps.map.wrapT =
-		woodTextureProps.normalMap.wrapS =
-		woodTextureProps.normalMap.wrapT =
-		woodTextureProps.roughnessMap.wrapS =
-		woodTextureProps.roughnessMap.wrapT =
-		woodTextureProps.aoMap.wrapS =
-		woodTextureProps.aoMap.wrapT =
+	sailTextureProps.map.wrapS =
+		sailTextureProps.map.wrapT =
+		sailTextureProps.normalMap.wrapS =
+		sailTextureProps.normalMap.wrapT =
+		sailTextureProps.roughnessMap.wrapS =
+		sailTextureProps.roughnessMap.wrapT =
+		sailTextureProps.aoMap.wrapS =
+		sailTextureProps.aoMap.wrapT =
 			THREE.RepeatWrapping;
-	woodTextureProps.side = THREE.DoubleSide;
-	return woodTextureProps;
+	sailTextureProps.side = THREE.DoubleSide;
+	return sailTextureProps;
+}
+
+function GetLifeJacketMaterial(displayLifeJacket) {
+	const TextureObject = {};
+	switch (displayLifeJacket) {
+		case 0:
+			TextureObject.map = './textures/textile/Fabric_Padded_006_basecolor.jpg';
+			TextureObject.normalMap =
+				'./textures/textile/Fabric_Padded_006_normal.jpg';
+			TextureObject.roughnessMap =
+				'./textures/textile/Fabric_Padded_006_roughness.jpg';
+			TextureObject.aoMap =
+				'./textures/textile/Fabric_Padded_006_ambientOcclusion.jpg';
+			break;
+		case 1:
+			TextureObject.map = './textures/textile/Fabric_Tarp_002_basecolor.jpg';
+			TextureObject.normalMap = './textures/textile/Fabric_Tarp_002_normal.jpg';
+			TextureObject.roughnessMap =
+				'./textures/textile/Fabric_Tarp_002_roughness.jpg';
+			TextureObject.aoMap =
+				'./textures/textile/Fabric_Tarp_002_ambientOcclusion.jpg';
+			break;
+		default:
+			break;
+	}
+	const TextureProps = useTexture(TextureObject);
+
+	return TextureProps;
 }

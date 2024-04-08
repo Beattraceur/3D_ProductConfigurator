@@ -29,6 +29,13 @@ export default function ConfigHandler() {
 	}, [config]);
 	const [boatMaterial, setBoatMaterial] = useState('wood');
 	const [sailMaterial, setSailMaterial] = useState('sail');
+	const [displayPaddleOars, setDisplayPaddleOars] = useState(false);
+	const [displayTeakBenches, setDisplayTeakBenches] = useState(false);
+	const [displayLaserEngraving, setDisplayLaserEngraving] = useState(false);
+	const [displayEngineSupport, setDisplayEngineSupport] = useState(false);
+	const [displayLadder, setDisplayLadder] = useState(false);
+	const [displayAwning, setDisplayAwning] = useState(false);
+	const [displayLifeJacket, setDisplayLifeJacket] = useState(false);
 	useEffect(() => {
 		config.Woodcolor !== undefined
 			? setBoatMaterial(config.Woodcolor)
@@ -36,6 +43,27 @@ export default function ConfigHandler() {
 		config.FabricSails !== undefined
 			? setSailMaterial(config.FabricSails)
 			: setSailMaterial('sail');
+		config.Ladder !== undefined
+			? setDisplayLadder(true)
+			: setDisplayLadder(false);
+		config.PaddleOars !== undefined
+			? setDisplayPaddleOars(true)
+			: setDisplayPaddleOars(false);
+		config.TeakBenches !== undefined
+			? setDisplayTeakBenches(true)
+			: setDisplayTeakBenches(false);
+		config.LaserEngraving !== undefined
+			? setDisplayLaserEngraving(true)
+			: setDisplayLaserEngraving(false);
+		config.EngineSupport !== undefined
+			? setDisplayEngineSupport(true)
+			: setDisplayEngineSupport(false);
+		config.Awning !== undefined
+			? setDisplayAwning(true)
+			: setDisplayAwning(false);
+		config.LifeJacket !== undefined
+			? setDisplayLifeJacket(config.LifeJacket)
+			: setDisplayLifeJacket(false);
 	}, [config]);
 
 	return (
@@ -43,7 +71,19 @@ export default function ConfigHandler() {
 			value={[productData, setProductData, priceData, setPriceData]}
 		>
 			<ConfigDispatchContext.Provider value={[config, configDispatch]}>
-				<DisplayContext.Provider value={{ boatMaterial, sailMaterial }}>
+				<DisplayContext.Provider
+					value={{
+						boatMaterial,
+						sailMaterial,
+						displayLadder,
+						displayPaddleOars,
+						displayTeakBenches,
+						displayLaserEngraving,
+						displayEngineSupport,
+						displayAwning,
+						displayLifeJacket,
+					}}
+				>
 					<ProductFinder />
 				</DisplayContext.Provider>
 			</ConfigDispatchContext.Provider>
