@@ -5,9 +5,11 @@ import {
 	useProductDataContext,
 } from './ConfigHandler.jsx';
 import { Link } from 'wouter';
+import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 
 export default function ConfigMenu() {
-	const [productData] = useProductDataContext();
+	const [productData, setProductData, priceData, setPriceData] =
+		useProductDataContext();
 	const [config, configDispatch] = useConfigDispatchContext();
 
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
@@ -87,8 +89,12 @@ export default function ConfigMenu() {
 									style={{ backgroundColor: productData.colorValues[item] }}
 								></span>
 							)}
-
-							{item}
+							<span className="item-name">{item}</span>
+							<span className="item-price">
+								{getFormattedPrice(
+									priceData[currentOption[subMenuIndex]][index],
+								)}
+							</span>
 						</label>
 					))}
 				</div>
