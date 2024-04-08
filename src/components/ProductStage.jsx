@@ -27,7 +27,7 @@ export default function ProductStage() {
 				<Sky scale={1000} sunPosition={[600, 150, 500]} turbidity={0.1} />
 				{/* <Environment preset="dawn" /> */}
 
-				<OrbitControls />
+				<OrbitControls maxPolarAngle={Math.PI / 2 - 0.01} />
 				<ScreenshotButton />
 			</Canvas>
 		</>
