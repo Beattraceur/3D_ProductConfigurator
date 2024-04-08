@@ -57,14 +57,14 @@
 	padding-top: 80px;
 }
 .config-item-label {
-	padding: 20px;
+	padding: 20px 40px 25px 20px;
 	margin: 0px 2px;
 	color: var(--text-color);
 	background-color: var(--button-back);
 	border-radius: 13px;
 }
 .config-item-label-active {
-	padding: 20px;
+	padding: 20px 40px 25px 20px;
 	margin: 0px 2px;
 	background-color: var(--button-set);
 	color: var(--button-back);
@@ -78,4 +78,14 @@
 	padding: 10px 20px;
 	border: solid darkgrey 3px;
 	border-radius: 30px;
+}
+.config-item-text-container {
+}
+.config-item-name {
+	position: relative;
+}
+.config-item-price {
+	font-size: 8pt;
+	position: absolute;
+	margin-top: 20px;
 }
