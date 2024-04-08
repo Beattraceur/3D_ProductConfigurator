@@ -108,15 +108,18 @@ export default function ConfigMenu() {
 									style={{ backgroundColor: productData.colorValues[item] }}
 								></span>
 							)}
-							<span className="config-item-text-container">
-								<span className="config-item-price">
-									+
-									{getFormattedPrice(
-										priceData[currentOption[subMenuIndex]][index],
-									)}
+							{(window.innerWidth > 1486 ||
+								productData.colorValues[item] === undefined) && (
+								<span className="config-item-text-container">
+									<span className="config-item-price">
+										+
+										{getFormattedPrice(
+											priceData[currentOption[subMenuIndex]][index],
+										)}
+									</span>
+									<span className="config-item-name">{item}</span>
 								</span>
-								<span className="config-item-name">{item}</span>
-							</span>
+							)}
 						</label>
 					))}
 				</div>
