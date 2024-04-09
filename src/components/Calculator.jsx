@@ -74,10 +74,15 @@ function ConfigList({ priceData, config, productData }) {
 		setConfigList(tempConfigList);
 	}, [priceData, config, productData]);
 	return (
-		<table>
+		<table className="config-table">
 			<thead>
 				<tr>
-					<td colSpan="4">Your current configuration:</td>
+					<td colSpan="3" className="table-header"></td>
+				</tr>
+				<tr>
+					<th>Product:</th>
+					<th>type:</th>
+					<th>individual price:</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -85,8 +90,7 @@ function ConfigList({ priceData, config, productData }) {
 					<tr key={item}>
 						<td>{item[0]}</td>
 						<td>{item[1]}</td>
-						<td>Price = </td>
-						<td>{item[2]}</td>
+						<td>- {item[2]}</td>
 					</tr>
 				))}
 			</tbody>

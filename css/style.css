@@ -2,7 +2,7 @@
 @import 'navigation';
 @import 'font';
 @import 'config-menu';
-
+@import 'checkout';
 :root {
 	--day: #ffffff;
 	--night: #1d1d1d;

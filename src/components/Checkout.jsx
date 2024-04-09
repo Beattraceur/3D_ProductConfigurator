@@ -6,19 +6,29 @@ import { useCaptureScreenContext } from './ConfigHandler.jsx';
 export default function Checkout() {
 	const [takeScreenShot, setTakeScreenShot, screenshotData, setScreenshotData] =
 		useCaptureScreenContext();
-	console.log(screenshotData);
+
 	return (
 		<div>
 			<Helmet title="Checkout" />
-			Checkout
+
 			{screenshotData !== null && (
-				<>
-					<img src={screenshotData[0]} width={400} height={400} />
-					<img src={screenshotData[1]} width={400} height={400} />
-					<img src={screenshotData[2]} width={400} height={400} />
-				</>
+				<div className="product-images-container">
+					{screenshotData.map((image, index) => (
+						<img
+							key={index}
+							className="product-image"
+							src={screenshotData[index]}
+							width={400}
+							height={400}
+							alt="product pictures"
+						/>
+					))}
+				</div>
 			)}
-			<Calculator display="all" />
+			<div className="total-display-checkout">
+				<h2>Your current configuration:</h2>
+				<Calculator display="all" />
+			</div>
 		</div>
 	);
 }

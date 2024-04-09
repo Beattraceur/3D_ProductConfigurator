@@ -22,8 +22,9 @@ export default function ConfigMenu() {
 	);
 
 	useEffect(() => {
-		console.log('Screeeeen');
-
+		setTimeout(() => {
+			setTakeScreenShot(2);
+		}, 20);
 		return () => {
 			setTakeScreenShot(2);
 		};

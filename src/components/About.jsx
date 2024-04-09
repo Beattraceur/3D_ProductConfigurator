@@ -5,7 +5,8 @@ export default function About() {
 	return (
 		<div>
 			<Helmet title="About" />
-			About
+			<h1>About</h1>
+			<p>Without background data loading from JSON </p>
 		</div>
 	);
 }
