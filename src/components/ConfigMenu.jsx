@@ -21,6 +21,14 @@ export default function ConfigMenu() {
 		getInitialOptions(productData),
 	);
 
+	useEffect(() => {
+		console.log('Screeeeen');
+
+		return () => {
+			setTakeScreenShot(2);
+		};
+	}, [config]);
+
 	return (
 		<div className="config-menu">
 			<div className="display-total">
@@ -53,7 +61,7 @@ export default function ConfigMenu() {
 
 				<IoIosCamera
 					className="screenshot-button"
-					onClick={() => setTakeScreenShot(true)}
+					onClick={() => setTakeScreenShot(1)}
 				/>
 
 				<Link href="/checkout">

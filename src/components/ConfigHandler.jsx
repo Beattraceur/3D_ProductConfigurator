@@ -32,6 +32,7 @@ export default function ConfigHandler() {
 		getInitialConfig,
 	);
 	const [takeScreenShot, setTakeScreenShot] = useState(false);
+	const [screenshotData, setScreenshotData] = useState(null);
 	const [boatMaterial, setBoatMaterial] = useState('wood');
 	const [sailMaterial, setSailMaterial] = useState('sail');
 	const [displayPaddleOars, setDisplayPaddleOars] = useState(false);
@@ -123,7 +124,12 @@ export default function ConfigHandler() {
 					}}
 				>
 					<CaptureScreenContext.Provider
-						value={[takeScreenShot, setTakeScreenShot]}
+						value={[
+							takeScreenShot,
+							setTakeScreenShot,
+							screenshotData,
+							setScreenshotData,
+						]}
 					>
 						<ProductFinder />
 					</CaptureScreenContext.Provider>

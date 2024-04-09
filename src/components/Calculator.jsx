@@ -77,7 +77,7 @@ function ConfigList({ priceData, config, productData }) {
 		<table>
 			<thead>
 				<tr>
-					<td colSpan="4">current configuration:</td>
+					<td colSpan="4">Your current configuration:</td>
 				</tr>
 			</thead>
 			<tbody>
