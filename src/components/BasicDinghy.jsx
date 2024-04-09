@@ -7,8 +7,9 @@ import React from 'react';
 import { useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useDisplayContext } from './ConfigHandler.jsx';
-
+// A jsx representation and loader of the gltf 3d models
 export default function BasicDinghy(props) {
+	//Imprt of the context that holds the display settings
 	const {
 		boatMaterial,
 		sailMaterial,
@@ -20,7 +21,7 @@ export default function BasicDinghy(props) {
 		displayAwning,
 		displayLifeJacket,
 	} = useDisplayContext();
-
+	//Texture properties for the 3d models
 	const { nodes, materials } = useGLTF('../models/basicDinghy.gltf');
 	const teakwoodTextureProps = useTexture({
 		map: './textures/wood/Wood_024_basecolor.jpg',
@@ -41,7 +42,7 @@ export default function BasicDinghy(props) {
 		roughnessMap: './textures/metal/Metal_scratched_008_roughness.jpg',
 		aoMap: './textures/metal/Metal_scratched_008_ambientOcclusion.jpg',
 	});
-
+	//Dynamic material properties
 	const boatMaterialProps = GetBoatMaterial(boatMaterial);
 	const sailMaterialProps = GetSailMaterial(sailMaterial);
 	const lifeJacketMaterialProps = GetLifeJacketMaterial(displayLifeJacket);
@@ -51,6 +52,7 @@ export default function BasicDinghy(props) {
 				geometry={nodes.Dinghy.geometry}
 				material={materials.basicWood}
 				scale={0.1}
+				// On and of setting the visibility of the 3d model
 				visible={true}
 			>
 				<meshStandardMaterial {...boatMaterialProps} />
@@ -77,6 +79,7 @@ export default function BasicDinghy(props) {
 				scale={0.1}
 				visible={true}
 			>
+				{/* Desition with textureProps to use */}
 				{displayTeakBenches ? (
 					<meshStandardMaterial {...teakwoodTextureProps} />
 				) : (
@@ -228,7 +231,7 @@ export default function BasicDinghy(props) {
 }
 
 useGLTF.preload('../models/basicDinghy.gltf');
-
+//Custom Material functions
 function GetBoatMaterial(boatMaterial) {
 	// console.log(boatMaterial);
 	const TextureObject = {
@@ -268,6 +271,7 @@ function GetBoatMaterial(boatMaterial) {
 			TextureObject.map = './textures/wood/Wood_027_basecolor.jpg';
 			break;
 	}
+	//individual texture tiling and wrapping
 	const woodTextureProps = useTexture(TextureObject);
 	woodTextureProps.map.repeat.set(2, 2);
 	woodTextureProps.normalMap.repeat.set(2, 2);

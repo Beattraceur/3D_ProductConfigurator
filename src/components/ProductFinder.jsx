@@ -5,11 +5,11 @@ import Home from './Home.jsx';
 import Configurator from './Configurator.jsx';
 import Checkout from './Checkout.jsx';
 import About from './About.jsx';
-
+//function that controls the routing
 export default function ProductFinder() {
 	return (
 		<div className="product-finder">
-			<Helmet title="ProductFinder" />
+			<Helmet title="3D Boat Configurator" />
 			<nav className="navbar">
 				<Link className="nav-item" href="/">
 					Home

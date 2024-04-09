@@ -1,27 +1,29 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useImmerReducer } from 'use-immer';
 import ProductFinder from './ProductFinder.jsx';
-
+//Contect that holds the product data
 const ProductDataContext = createContext(null);
+//Context that holds the current configuration
 const ConfigDispatchContext = createContext(null);
+//Context that holds the 3d display settings
 const DisplayContext = createContext({});
+//Context that holds the screenshot data
 const CaptureScreenContext = createContext({});
-
+//Context helping hooks
 export function useProductDataContext() {
 	return useContext(ProductDataContext);
 }
-
 export function useConfigDispatchContext() {
 	return useContext(ConfigDispatchContext);
 }
 export function useDisplayContext() {
 	return useContext(DisplayContext);
 }
-
 export function useCaptureScreenContext() {
 	return useContext(CaptureScreenContext);
 }
 export default function ConfigHandler() {
+	//individual states for all the nescessary data and functions
 	const [sharingURL, setSharingURL] = useState(false);
 	const [clipboardNote, setClipboardNote] = useState(false);
 	const [productData, setProductData] = useState(null);
@@ -42,6 +44,7 @@ export default function ConfigHandler() {
 	const [displayLadder, setDisplayLadder] = useState(false);
 	const [displayAwning, setDisplayAwning] = useState(false);
 	const [displayLifeJacket, setDisplayLifeJacket] = useState(false);
+	//save config to local storage and clear url
 	useEffect(() => {
 		setClipboardNote(false);
 		const url = new URL(window.location.href);
@@ -49,13 +52,13 @@ export default function ConfigHandler() {
 		window.history.replaceState(null, null, url.href);
 		localStorage.setItem('config', JSON.stringify(config));
 	}, [config]);
-
+	//write url to clipboard and show searchParams url
 	useEffect(() => {
 		if (sharingURL) {
-			console.log('sharingURL', sharingURL);
+			// console.log('sharingURL', sharingURL);
 			const url = new URL(window.location.href);
 			url.searchParams.delete('config');
-			console.log('config', config);
+			// console.log('config', config);
 			url.searchParams.set('config', JSON.stringify(config));
 			window.history.replaceState(null, null, url.href);
 			navigator.clipboard
@@ -73,6 +76,7 @@ export default function ConfigHandler() {
 		}
 	}, [sharingURL]);
 
+	//set material according to config
 	useEffect(() => {
 		config.Woodcolor !== undefined
 			? setBoatMaterial(config.Woodcolor)
@@ -104,6 +108,7 @@ export default function ConfigHandler() {
 	}, [config]);
 
 	return (
+		// Context providers for all the data
 		<ProductDataContext.Provider
 			value={[productData, setProductData, priceData, setPriceData]}
 		>
@@ -138,7 +143,7 @@ export default function ConfigHandler() {
 		</ProductDataContext.Provider>
 	);
 }
-
+//ImmerReducer to change custom user config
 function configReducer(config, message) {
 	// console.log(message);
 	switch (message.action) {
@@ -151,13 +156,13 @@ function configReducer(config, message) {
 			delete config[message.currentOption];
 			break;
 		case 'reset':
-			console.log('reset');
+			// console.log('reset');
 			return {};
 		default:
 			break;
 	}
 }
-
+//get initial config from url or local storage
 function getInitialConfig() {
 	const url = new URL(window.location.href);
 	if (url.searchParams.get('config')) {

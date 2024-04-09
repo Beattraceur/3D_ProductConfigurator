@@ -1,13 +1,15 @@
 import { useThree } from '@react-three/fiber';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import * as THREE from 'three';
 import { useCaptureScreenContext } from './ConfigHandler.jsx';
+//function for 2d capturing of the 3d scene
 export default function ScreenshotButton() {
+	//context that holds the screenshot data
 	const [takeScreenShot, setTakeScreenShot, screenshotData, setScreenshotData] =
 		useCaptureScreenContext();
-
+	//camera for capturing with active camera
 	const { gl, scene, camera } = useThree();
-	// Create a secondary camera
+	//three extra cameras for capturing different parts of the 3d scene
 	const photoCamera1 = new THREE.PerspectiveCamera(
 		75,
 		window.innerWidth / window.innerHeight,
@@ -40,6 +42,7 @@ export default function ScreenshotButton() {
 	photoCamera3.aspect = 400 / 400;
 	photoCamera3.updateProjectionMatrix();
 	scene.add(photoCamera3);
+	//function to capture the 3d scene with active camera and download the image
 	function ScreenShot() {
 		gl.render(scene, camera);
 		gl.toneMapping = THREE.ACESFilmicToneMapping;
@@ -59,6 +62,7 @@ export default function ScreenshotButton() {
 			1.0,
 		);
 	}
+	//function to capture the 3d scene with different cameras for checkout page
 	function tempScreenShot() {
 		const pictureArray = [];
 		for (let index = 1; index <= 3; index++) {
@@ -85,6 +89,7 @@ export default function ScreenshotButton() {
 		}
 		setScreenshotData(pictureArray);
 	}
+	//deside for which purpose to take the screenshot
 	useEffect(() => {
 		if (takeScreenShot === 1) {
 			ScreenShot();
@@ -98,18 +103,4 @@ export default function ScreenshotButton() {
 			setTakeScreenShot(false);
 		};
 	}, [takeScreenShot]);
-
-	// return (
-	// <sprite {...props} scale={[10, 10, 10]} onClick={ScreenShot}>
-	// 	<spriteMaterial
-	// 		attach="material"
-	// 		color={'lightblue'}
-	// 		depthWrite={false}
-	// 		depthTest={false}
-	// 		renderOrder={10000}
-	// 		fog={false}
-	// 		onClick={ScreenShot}
-	// 	/>
-	// </sprite>
-	// );
 }

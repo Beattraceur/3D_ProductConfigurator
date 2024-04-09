@@ -8,14 +8,15 @@ import DataLoader from './DataLoader.jsx';
 
 export default function Configurator() {
 	const [productData, setProductData] = useProductDataContext();
+	//loads the data from the database before the page loads
 	if (productData === null) return <DataLoader />;
 
 	return (
 		<div className="configurator">
 			<Helmet title="Configurator" />
-
+			{/* 3d stage */}
 			<ProductStage />
-
+			{/* overlay menu */}
 			<ConfigMenu />
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React from 'react';
 import DataLoader from './DataLoader.jsx';
-
+//just a free home webpage
 export default function Home() {
 	//Load product data in background
 	console.log(DataLoader().props.children);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useProductDataContext } from './ConfigHandler.jsx';
 import jsonPriceList from '../data/p8priceList.json';
 import jsonData from '../data/productConfig.json';
+//a function that simulates data fetching from a database
 export default function DataLoader() {
 	const [productData, setProductData, priceData, setPriceData] =
 		useProductDataContext();

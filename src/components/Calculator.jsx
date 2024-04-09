@@ -6,8 +6,9 @@ import {
 
 import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 import DataLoader from './DataLoader.jsx';
-
+//function that returns the actual config list and the total price depending on the settings: display
 export default function Calculator({ display }) {
+	//getting all the needed context data
 	const [productData, setProductData, priceData, setPriceData] =
 		useProductDataContext();
 
@@ -36,7 +37,7 @@ export default function Calculator({ display }) {
 		</div>
 	);
 }
-
+//function that calculates the total price
 function TotalPrice({ priceData, config }) {
 	const [totalPrice, setTotalPrice] = useState(0);
 
@@ -53,7 +54,7 @@ function TotalPrice({ priceData, config }) {
 	}, [priceData, config]);
 	return <p className="total">Total: {totalPrice}</p>;
 }
-
+//function that returns the actual config list
 function ConfigList({ priceData, config, productData }) {
 	const [configList, setConfigList] = useState([]);
 	useEffect(() => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosCamera } from 'react-icons/io';
-import jsonData from '../data/productConfig.json';
 import {
 	useCaptureScreenContext,
 	useConfigDispatchContext,
@@ -11,6 +10,7 @@ import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 import Calculator from './Calculator.jsx';
 
 export default function ConfigMenu() {
+	//getting all the needed context data
 	const [productData, setProductData, priceData, setPriceData] =
 		useProductDataContext();
 	const [config, configDispatch, setSharingURL, clipboardNote] =
@@ -20,13 +20,15 @@ export default function ConfigMenu() {
 	const [currentOption, setCurrentOption] = useState(
 		getInitialOptions(productData),
 	);
-
+	//useEffect to trigger screenshots of the 3d product for checkout page every time the config changes
 	useEffect(() => {
 		setTimeout(() => {
 			setTakeScreenShot(2);
 		}, 20);
 		return () => {
-			setTakeScreenShot(2);
+			setTimeout(() => {
+				setTakeScreenShot(2);
+			}, 20);
 		};
 	}, [config]);
 
@@ -117,6 +119,7 @@ export default function ConfigMenu() {
 									style={{ backgroundColor: productData.colorValues[item] }}
 								></span>
 							)}
+							{/* show color dips only on small screens */}
 							{(window.innerWidth > 1486 ||
 								productData.colorValues[item] === undefined) && (
 								<span className="config-item-text-container">
@@ -136,7 +139,7 @@ export default function ConfigMenu() {
 		</div>
 	);
 }
-
+//get initial options from productData
 function getInitialOptions(productData) {
 	// console.log('productData', productData);
 	const initialOptions = [];

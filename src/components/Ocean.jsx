@@ -1,6 +1,7 @@
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
+//just a free ocean with a custom hole for the Boat to sit in
 export default function Ocean() {
 	const ref = useRef();
 	const gl = useThree((state) => state.gl);
@@ -9,7 +10,7 @@ export default function Ocean() {
 	const x = 0,
 		y = 0;
 
-	// Create the outer square shape
+	// the outer square shape
 	const squareShape = new THREE.Shape();
 	squareShape.moveTo(x - 2000, y - 2000);
 	squareShape.lineTo(x + 2000, y - 2000);
@@ -17,7 +18,7 @@ export default function Ocean() {
 	squareShape.lineTo(x - 2000, y + 2000);
 	squareShape.lineTo(x - 2000, y - 2000);
 
-	// Create the bezier curve cutout shape
+	// the bezier curve cutout shape
 	const cutoutShape = new THREE.Shape();
 	cutoutShape.moveTo(x + 13.2, y);
 	cutoutShape.bezierCurveTo(x + 1.7, y - 8.5, x - 11.3, y - 4, x - 11.3, y - 4);
@@ -25,7 +26,7 @@ export default function Ocean() {
 	cutoutShape.bezierCurveTo(x - 11.3, y + 4, x + 1.7, y + 8.5, x + 13.2, y);
 	cutoutShape.lineTo(x + 13.2, y);
 
-	// Perform Boolean subtraction to create the cutout
+	// Boolean subtraction to create the cutout
 	squareShape.holes.push(cutoutShape);
 	const geom = useMemo(() => new THREE.ShapeGeometry(squareShape), []);
 	const config = useMemo(
@@ -42,6 +43,7 @@ export default function Ocean() {
 		}),
 		[waterNormals],
 	);
+	// let the water flow
 	useFrame(
 		(state, delta) => (ref.current.material.uniforms.time.value += delta),
 	);
