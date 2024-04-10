@@ -31,7 +31,7 @@ export default function ConfigMenu() {
 		return () => {
 			setTakeScreenShot(2);
 		};
-	}, [location]);
+	}, [location, config]);
 
 	return (
 		<div className="config-menu">
