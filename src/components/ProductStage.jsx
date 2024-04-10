@@ -1,15 +1,25 @@
 import { Canvas, extend } from '@react-three/fiber';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 import BasicDinghy from './BasicDinghy.jsx';
 import { OrbitControls, Sky } from '@react-three/drei';
 import { Water } from 'three-stdlib';
 import Ocean from './Ocean.jsx';
 import ScreenshotButton from './ScreenshotButton.jsx';
+import { useCaptureScreenContext } from './ConfigHandler.jsx';
 
 extend({ Water });
 //function that renders the 3d stage
 export default function ProductStage() {
+	const [takeScreenShot, setTakeScreenShot] = useCaptureScreenContext();
+	useEffect(() => {
+		const id = setTimeout(() => {
+			setTakeScreenShot(2);
+		}, 2000);
+		return () => {
+			clearTimeout(id);
+		};
+	}, []);
 	return (
 		<>
 			{/* 3d stage */}
