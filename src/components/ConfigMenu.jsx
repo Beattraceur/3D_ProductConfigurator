@@ -27,6 +27,11 @@ export default function ConfigMenu() {
 		setTimeout(() => {
 			setTakeScreenShot(2);
 		}, 100);
+		return () => {
+			setTimeout(() => {
+				setTakeScreenShot(2);
+			}, 100);
+		};
 	}, [location, config]);
 
 	return (
