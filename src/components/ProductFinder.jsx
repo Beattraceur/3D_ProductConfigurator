@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, Route } from 'wouter';
+import { Link, Route, useLocation } from 'wouter';
 import Home from './Home.jsx';
 import Configurator from './Configurator.jsx';
 import Checkout from './Checkout.jsx';
 import About from './About.jsx';
+import { useCaptureScreenContext } from './ConfigHandler.jsx';
 //function that controls the routing
 export default function ProductFinder() {
 	return (

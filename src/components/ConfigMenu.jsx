@@ -5,7 +5,7 @@ import {
 	useConfigDispatchContext,
 	useProductDataContext,
 } from './ConfigHandler.jsx';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { getFormattedPrice } from '../hooks/getFormatedPrice.js';
 import Calculator from './Calculator.jsx';
 
@@ -21,16 +21,17 @@ export default function ConfigMenu() {
 		getInitialOptions(productData),
 	);
 	//useEffect to trigger screenshots of the 3d product for checkout page every time the config changes
+	const [location, setLocation] = useLocation();
+
 	useEffect(() => {
 		setTimeout(() => {
 			setTakeScreenShot(2);
-		}, 20);
+		}, 1000);
+
 		return () => {
-			setTimeout(() => {
-				setTakeScreenShot(2);
-			}, 20);
+			setTakeScreenShot(2);
 		};
-	}, [config]);
+	}, [location]);
 
 	return (
 		<div className="config-menu">
