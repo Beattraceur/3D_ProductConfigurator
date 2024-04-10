@@ -26,11 +26,7 @@ export default function ConfigMenu() {
 	useEffect(() => {
 		setTimeout(() => {
 			setTakeScreenShot(2);
-		}, 1000);
-
-		return () => {
-			setTakeScreenShot(2);
-		};
+		}, 10);
 	}, [location, config]);
 
 	return (
