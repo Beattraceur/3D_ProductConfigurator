@@ -91,7 +91,7 @@ function ConfigList({ priceData, config, productData }) {
 					<tr key={item}>
 						<td>{item[0]}</td>
 						<td>{item[1]}</td>
-						<td>- {item[2]}</td>
+						<td className="price-display">{item[2]}</td>
 					</tr>
 				))}
 			</tbody>
